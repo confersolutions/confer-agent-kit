@@ -141,6 +141,122 @@ That's it! 🎉
 
 ---
 
+## 🔧 Using in Existing Repositories
+
+If you're working on an **existing project**, here's how to add Confer Agent Kit without disrupting your codebase.
+
+### Recommended Approach: Vendor the Kit
+
+**Keep it simple!** Copy the kit into your project root as a subfolder. This keeps each repo independent and easy to manage.
+
+### Project Structure
+
+After adding the kit, your repo will look like this:
+
+```
+<your-app-repo>/
+├── confer-agent-kit/      ← The kit lives here
+│   ├── templates/
+│   ├── README.md
+│   └── ...
+├── confer-agent.profile.yml  ← Your project profile (at repo root)
+├── src/                    ← Your application code
+├── package.json
+└── ...
+```
+
+**Important:** 
+- Put the kit at the **project root** (not under `src/`)
+- The kit is **tooling**, not runtime code
+- Keep the kit's internal structure unchanged
+- Put your project profile at the **repo root** (`confer-agent.profile.yml`)
+
+### Two Ways to Vendor the Kit
+
+#### Option 1: Simple Copy (Easiest for Juniors)
+
+**Best for:** Getting started quickly, one-time setup
+
+1. **Download or clone** the kit:
+   ```bash
+   git clone https://github.com/confersolutions/confer-agent-kit.git /tmp/confer-agent-kit
+   ```
+
+2. **Copy to your project root:**
+   ```bash
+   cd /path/to/your-app-repo
+   cp -r /tmp/confer-agent-kit ./confer-agent-kit
+   ```
+
+   Or use a zip file:
+   - Download the kit as a zip
+   - Extract it to `confer-agent-kit/` in your project root
+
+3. **Done!** The kit is now in your repo.
+
+**Pros:** Simple, no git complexity  
+**Cons:** Manual updates needed if the kit changes
+
+#### Option 2: Git Subtree (Easy Updates Later)
+
+**Best for:** Easy updates when the kit improves
+
+From your existing project repo root:
+
+```bash
+# Add the kit as a subtree (one-time)
+git subtree add --prefix confer-agent-kit \
+  https://github.com/confersolutions/confer-agent-kit.git main --squash
+
+# Later, update the kit (when needed)
+git subtree pull --prefix confer-agent-kit \
+  https://github.com/confersolutions/confer-agent-kit.git main --squash
+```
+
+**Pros:** Easy updates later  
+**Cons:** Slightly more complex initial setup
+
+**Note:** We recommend avoiding git submodules for juniors (they're confusing). Subtree or simple copy work great!
+
+### Bootstrap Checklist for Juniors
+
+Follow these simple steps to get started:
+
+- [ ] **Step 1:** Drop `confer-agent-kit/` at your project root
+- [ ] **Step 2:** Copy `confer-agent-kit/confer-agent.profile.example.yml` → `./confer-agent.profile.yml`
+- [ ] **Step 3:** Fill in `confer-agent.profile.yml` with your project details
+- [ ] **Step 4:** Keep secrets in your platform's environment variables (not in git)
+- [ ] **Step 5:** Use `templates/02-dev/task_template_quick.md` for quick tasks
+- [ ] **Step 6:** Use `templates/02-dev/task_template_full.md` for bigger features
+- [ ] **Step 7:** Use `templates/05-advanced/task_orchestrator.md` for chaining multiple tasks
+
+**That's it!** You don't need to change the kit's structure. Just ensure:
+- ✅ The kit folder is at the repo root
+- ✅ The profile file is at the repo root
+- ✅ Everything else stays as-is
+
+### Quick Example
+
+```bash
+# In your existing project
+cd ~/projects/my-existing-app
+
+# Add the kit (simple copy)
+cp -r ~/confer-agent-kit ./confer-agent-kit
+
+# Create your profile
+cp confer-agent-kit/confer-agent.profile.example.yml ./confer-agent.profile.yml
+
+# Edit the profile
+# ... fill in your project details ...
+
+# Start using templates!
+cd confer-agent-kit/templates/02-dev
+# Copy task_template_quick.md to your tasks/ folder
+```
+
+---
+
 ## 📚 How Templates Work
 
 Every template follows the same structure (this is what makes AI agents so effective):
