@@ -137,6 +137,8 @@ AI: *Reads template* "I see you want to add Clerk authentication.
     src/lib/actions/ and the auth component in src/components/auth/..."
 ```
 
+**📖 See [`templates/02-dev/commands_reference.md`](templates/02-dev/commands_reference.md) for more examples of how to invoke templates with different AI tools.**
+
 That's it! 🎉
 
 ---
@@ -486,6 +488,52 @@ The orchestrator will:
 - Run them in dependency order
 - Track progress
 - Report completion
+
+---
+
+## 📋 Recommended Flow (Optional)
+
+**Note:** This is a suggested workflow. Use templates as needed; there's no enforced structure. These guidelines are optional and adaptable to your needs.
+
+### When to Use Which Templates
+
+**Planning Phase (01-prep):**
+- Start with `01_master_idea.md` to define vision and goals
+- Use `02_app_name.md`, `03_ui_theme.md` for branding
+- Follow `05_pages_and_functionality.md` → `07_data_models.md` → `08_system_design.md` → `09_build_order.md` as needed
+- Complete before writing code
+
+**Development Phase (02-dev):**
+- **Quick tasks** (<2 hours): Use `task_template_quick.md`
+- **Complex features**: Use `task_template_full.md`
+- **Bugs**: Use `bugfix.md`
+- **Testing**: Use `testing_checklist.md` after implementation
+- **Verification**: Use `verification_workflow.md` after merge/deploy
+
+**UI Work (03-ui):**
+- Use `improve_ui.md`, `landing_page.md`, or `diagram_mermaid.md` as needed
+
+**Database Work (04-db):**
+- Use `drizzle_down_migration.md` or `drizzle_rollback.md` for migrations
+
+**Infrastructure (06-infra):**
+- Use platform-specific runbooks (`coolify_platform.md`, `vercel_frontend.md`, etc.)
+- Reference `00_infra_conventions.md` for port/routing conventions
+
+**Advanced (05-advanced):**
+- Use `task_orchestrator.md` for multi-task workflows with dependencies
+- Supports optional multi-agent hints (backward compatible)
+
+### Where Standards Are Consulted
+
+**Optional guidance files** in `standards/`:
+- `standards/global.md` - Naming, logging, errors, docs, tokens
+- `standards/backend.md` - API patterns, DTOs, validation, error mapping
+- `standards/frontend.md` - Component structure, state management, accessibility
+
+**Usage:** Reference standards files when filling templates or implementing features. They're checklists and examples, not mandates.
+
+**Example:** When implementing an API endpoint, check `standards/backend.md` for DTO patterns, validation, and error handling guidance.
 
 ---
 

@@ -68,6 +68,18 @@ External snippets/links cached in `refs/` (gitignored):
 ```yaml
 mode: "sequential"   # or "parallel"
 
+# Optional: Multi-agent hints (single-agent compatible)
+# If agents/assign not provided, runs as single-agent mode (backward compatible)
+agents:
+  - name: "backend-specialist"
+    scope: "API endpoints, database queries, server logic"
+    strengths: ["FastAPI", "Drizzle ORM", "API design"]
+    notes: "Prefers TypeScript/Node.js backend work"
+  - name: "frontend-specialist"
+    scope: "React components, UI/UX, client-side state"
+    strengths: ["Next.js", "Tailwind CSS", "Accessibility"]
+    notes: "Prefers React/TypeScript frontend work"
+
 tasks:
   - id: "T1"
     title: "Human-readable title"
@@ -78,6 +90,12 @@ tasks:
     done_when:
       - "All success criteria in child task are checked"
       - "Required artifacts exist under refs/"
+
+# Optional: Task-to-agent assignment (requires agents list above)
+# If not provided, tasks run with default single-agent behavior
+assign:
+  - task_id: "T1"
+    agent_name: "backend-specialist"  # optional hint for AI orchestrator
 ```
 
 ---
@@ -89,6 +107,7 @@ tasks:
 - Build dependency graph (DAG)
 - Validate: if cycle detected, fail fast with clear error message
 - Topological sort to determine execution order
+- **Multi-agent hint:** If `agents` and `assign` provided, map tasks to agents (optional; single-agent compatible)
 
 **Step 2: Auto-Numbering Algorithm**
 - Scan `output_dir` (e.g., `tasks/`) for filenames matching `^\d{3}_.*\.md$`
@@ -245,6 +264,7 @@ tasks:
 **Actions:** 
 - Resolve date placeholders: created_at = today (America/Chicago, YYYY-MM-DD); updated_at = now (ISO8601 with offset). Do not leave placeholders.
 - Parse Declared Tasks YAML block
+- **Multi-agent hint:** If `agents` and `assign` provided, use agent hints when executing tasks (optional; backward compatible)
 - Build DAG from `depends_on` and validate for cycles
 - Apply auto-numbering algorithm for each child task
 - Create child task files from templates
@@ -256,6 +276,7 @@ tasks:
 - Resolve all {{TOKEN}} placeholders at instantiation time; leave none unresolved.
 - Set `created_at` = {{AUTO:DATE:America/Chicago}}, `updated_at` = {{AUTO:DATETIME_ISO:America/Chicago}}.
 - Replace only in YAML/TODO fields; never inject {{TOKEN}} into runtime code.
+- **Multi-agent compatibility:** If `agents`/`assign` not provided, run as single-agent (backward compatible)
 - Do not modify existing templates or task files unnecessarily
 - Keep child tasks aligned with house style (Context Capsule, References & Inputs, etc.)
 - Follow existing template formatting rules

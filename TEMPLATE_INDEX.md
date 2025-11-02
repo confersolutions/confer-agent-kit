@@ -18,16 +18,19 @@ Quick reference for all 29 templates organized by category. Start here to find t
 
 ---
 
-## Dev Templates (7 templates: daily coding workflow)
+## Dev Templates (10 templates: daily coding workflow)
 
-- [task_template_full.md](templates/dev/task_template_full.md) – Full task template (comprehensive)
-- [task_template_quick.md](templates/dev/task_template_quick.md) – Quick task template (fast tasks)
-- [bugfix.md](templates/dev/bugfix.md) – Standardized bug reproduction → fix → validation workflow
-- [diff_review.md](templates/dev/diff_review.md)
-- [cleanup_ts_js.md](templates/dev/cleanup_ts_js.md)
-- [git_commit_messages.md](templates/dev/git_commit_messages.md)
-- [pr_review_checklist.md](templates/dev/pr_review_checklist.md)
-- [update_workflow.md](templates/dev/update_workflow.md)
+- [commands_reference.md](templates/02-dev/commands_reference.md) – Quick guide on how to invoke templates with AI agents
+- [task_template_full.md](templates/02-dev/task_template_full.md) – Full task template (comprehensive)
+- [task_template_quick.md](templates/02-dev/task_template_quick.md) – Quick task template (fast tasks)
+- [bugfix.md](templates/02-dev/bugfix.md) – Standardized bug reproduction → fix → validation workflow
+- [testing_checklist.md](templates/02-dev/testing_checklist.md) – Lightweight test plan per task
+- [verification_workflow.md](templates/02-dev/verification_workflow.md) – Post-merge verification steps and rollback checklist
+- [diff_review.md](templates/02-dev/diff_review.md)
+- [cleanup_ts_js.md](templates/02-dev/cleanup_ts_js.md)
+- [git_commit_messages.md](templates/02-dev/git_commit_messages.md)
+- [pr_review_checklist.md](templates/02-dev/pr_review_checklist.md)
+- [update_workflow.md](templates/02-dev/update_workflow.md)
 
 ---
 
@@ -69,7 +72,20 @@ Quick reference for all 29 templates organized by category. Start here to find t
 - [adk_bottleneck_analysis.md](templates/05-advanced/adk_bottleneck_analysis.md)
 - [agent_orchestrator.md](templates/05-advanced/agent_orchestrator.md)
 - [agent_design_playbook.md](templates/05-advanced/agent_design_playbook.md)
-- [task_orchestrator.md](templates/05-advanced/task_orchestrator.md) – Orchestrate arbitrary tasks (seq/parallel) with loop-until-done
+- [task_orchestrator.md](templates/05-advanced/task_orchestrator.md) – Orchestrate arbitrary tasks (seq/parallel) with loop-until-done and optional multi-agent hints
+
+---
+
+## Standards (Optional Guidance)
+
+**Purpose:** Lightweight coding standards organized by domain. Use these checklists and examples as needed; they're optional guidance, not mandates.
+
+- [README.md](standards/README.md) – How to reference standards with AI agents
+- [global.md](standards/global.md) – Naming, logging, errors, docs, tokens, profile usage
+- [backend.md](standards/backend.md) – API patterns, DTOs, validation, error mapping, idempotency
+- [frontend.md](standards/frontend.md) – Component structure, state management, accessibility, testing
+
+**Usage:** Reference standards files when filling templates or implementing features. Always reference `./confer-agent.profile.yml` for project constants (ports, frameworks, env).
 
 ---
 
