@@ -78,6 +78,15 @@ External snippets/links cached in `refs/` (gitignored):
 
 ---
 
+## Data Access Patterns (If Applicable)
+
+**Quick Rules:**
+- Mutations: [where create/update/delete go]
+- Queries: [where read operations go]
+- API Routes: [structure if adding endpoints]
+
+---
+
 ## Plan (Mini)
 
 **Step 1:** ...  
@@ -86,6 +95,8 @@ External snippets/links cached in `refs/` (gitignored):
 
 **Dependencies:** Other tasks/PRs (if any, 1 line)  
 **Rollback:** How to revert (1 line)
+
+**Impact Check:** [Quick note on code sections at risk, performance concerns, or user workflow impacts if significant]
 
 ---
 
@@ -112,11 +123,32 @@ External snippets/links cached in `refs/` (gitignored):
 
 ## AI Agent Actions & Guardrails
 
+**Implementation Workflow:**
+- Review all sections before starting
+- Follow plan sequentially
+- Update progress in real-time (see below)
+- Verify Success Criteria before completion
+
 **Actions:**
+- **Update progress:** Mark front matter `status` as work progresses (draft → in_progress → review → done). Update Acceptance Criteria checkboxes when met.
 - Resolve date placeholders: created_at = today (America/Chicago, YYYY-MM-DD); updated_at = now (ISO8601 with offset). Do not leave placeholders.
 - Generate minimal diff
 - Add 1-2 unit tests
 - Update docs section
+
+**Communication Preferences:**
+- Update status and checkboxes in real-time as work completes
+- If blocked, note it in the relevant section (Dependencies, Impact Check)
+- Document decisions immediately in relevant sections
+- Flag questions explicitly rather than making assumptions
+
+**Code Quality Standards:**
+- Follow existing project lint rules and formatting
+- Include proper error handling and validation
+- Add JSDoc comments for public functions
+- Write unit tests for critical paths
+- Avoid N+1 queries and performance issues
+- Follow data access pattern rules above (if applicable)
 
 **Guardrails:**
 - Resolve all {{TOKEN}} placeholders at instantiation time; leave none unresolved.
@@ -126,4 +158,5 @@ External snippets/links cached in `refs/` (gitignored):
 - Keep commits scoped
 - Follow existing lint rules
 - No literal date placeholders remain; created_at and updated_at are populated as above.
+- Follow data access pattern rules above (if applicable)
 

@@ -81,6 +81,10 @@ External snippets/links cached in `refs/` (gitignored):
 - Minimal failing path or function
 - Scope of impact (feature flags? tenants? roles?)
 
+**Data Access Impact (if applicable):**
+- Which mutations/queries are affected? [if backend bug]
+- Code location per project patterns: [where the fix goes]
+
 ---
 
 ## 6. Fix Plan
@@ -92,6 +96,11 @@ External snippets/links cached in `refs/` (gitignored):
 | 3    |             |                            |
 
 **Rollback (one line):** how to revert safely (code + data).
+
+**Side Effects Check:**
+- Could this fix break other code? [related functions/components]
+- Performance impact? [queries, rendering, etc.]
+- User workflow changes? [if fix changes UX]
 
 ---
 
@@ -119,7 +128,33 @@ External snippets/links cached in `refs/` (gitignored):
 
 ## 9. AI Agent Actions & Guardrails
 
-**Actions:** generate minimal diff; add targeted unit test(s); update docs line in this file.
+**Implementation Workflow:**
+- Review reproduction steps and root cause before fixing
+- Follow fix plan sequentially (Section 6)
+- Update progress in real-time (see below)
+- Verify all Tests & Validation criteria (Section 8) before completion
 
-**Guardrails:** do not modify unrelated files; keep commits scoped; follow existing lint rules.
+**Actions:**
+- **Update progress:** Mark front matter `status` as work progresses (draft → in_progress → review → done). Update Tests & Validation checkboxes when satisfied.
+- Generate minimal diff
+- Add targeted unit test(s)
+- Update docs line in this file
+
+**Communication Preferences:**
+- Update status and checkboxes in real-time as work completes
+- If blocked during fix, note it in Side Effects Check (Section 6) or Triage section
+- Document fix decisions immediately
+- Flag questions explicitly rather than making assumptions
+
+**Code Quality Standards:**
+- Follow existing project lint rules and formatting
+- Include proper error handling for fix
+- Add regression protection test (Section 8)
+- Follow data access pattern rules if backend changes (per project structure)
+
+**Guardrails:**
+- Do not modify unrelated files
+- Keep commits scoped
+- Follow existing lint rules
+- Follow data access pattern rules if backend changes (per project structure)
 

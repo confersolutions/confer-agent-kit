@@ -1,388 +1,692 @@
-# Confer Agent Kit
+# 🚀 Confer Agent Kit
 
-**AI-first templates for planning, building, fixing, and shipping — fast, consistent, and project-agnostic.**
+> **AI-first templates for planning, building, fixing, and shipping — fast, consistent, and project-agnostic.**
 
----
-
-## Overview
-
-Confer Agent Kit is a modular template library designed for AI-assisted software development. Use it in new or existing repositories to standardize workflows, ensure consistency, and accelerate delivery.
-
-**What this is:**
-
-- A modular template kit used in new or existing repos
-- Standard schema across templates (YAML front matter → Context Capsule → References & Inputs → File Map & Artifacts → AI Actions & Guardrails)
-- Project-agnostic by design: no hard-coded infra; all specifics come from a per-project profile
-
-**What this is not:**
-
-- A framework or runtime dependency
-- Tied to specific infrastructure or frameworks
-- A replacement for project documentation
+**Confer Agent Kit** is a collection of **29 structured templates** that help you and AI agents work together to build software faster and more consistently. Think of it as a blueprint library for your entire development workflow.
 
 ---
 
-## Quick Start
+## 📋 Table of Contents
 
-1. **Copy the profile template:** Copy `confer-agent.profile.example.yml` into your project as `confer-agent.profile.yml`, then fill in your project-specific values.
-
-2. **Optional local overrides:** Create `confer-agent.profile.local.yml` for dev overrides (gitignored).
-
-3. **Browse templates:** Open `TEMPLATE_INDEX.md` and pick a template (e.g., Task Quick for rapid coding tasks).
-
-4. **Generate a task:** Create a new task using a template — it will auto-number into `tasks/NNN_<slug>.md`.
+- [What Is This?](#what-is-this)
+- [Why Use It?](#why-use-it)
+- [Quick Start (5 Minutes)](#quick-start-5-minutes)
+- [How Templates Work](#how-templates-work)
+- [Template Categories](#template-categories)
+- [Common Workflows](#common-workflows)
+- [Project Profile System](#project-profile-system)
+- [Auto-Numbering Tasks](#auto-numbering-tasks)
+- [Task Orchestrator](#task-orchestrator)
+- [Best Practices](#best-practices)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [Resources](#resources)
 
 ---
 
-## Per-Project Profile
+## 🤔 What Is This?
 
-All templates reference a per-project configuration profile to remain project-agnostic. **Never hard-code ports, environments, frameworks, or infrastructure in templates.**
+Confer Agent Kit provides **structured templates** (like fill-in-the-blank forms) that guide you through:
 
-### Profile Files
+- ✅ **Planning** your project from idea to launch
+- ✅ **Building** features with AI assistance
+- ✅ **Fixing** bugs systematically
+- ✅ **Deploying** to infrastructure platforms
 
-**`confer-agent.profile.yml`** (checked in, project-specific)
-- Contains project-specific configuration (ports, frameworks, auth, infra)
-- Copy from `confer-agent.profile.example.yml` and fill in your values
-- This file belongs in your project repository
-- All templates reference this file via `./confer-agent.profile.yml`
+### Think of it like this:
 
-**`confer-agent.profile.local.yml`** (gitignored, local overrides)
-- Optional local overrides for development
-- Not committed to the repository
-- Use for dev-only ports, local service URLs, or personal preferences
+```
+Traditional Approach:
+You → AI Chat → "Build me a login page" → AI guesses what you want → Inconsistent results
 
-### Profile Schema
+With Confer Agent Kit:
+You → Template → Fill in structured questions → AI knows exactly what to build → Consistent, predictable results
+```
+
+### What it IS:
+
+- ✅ **A template library** — 29 ready-to-use templates
+- ✅ **Project-agnostic** — Works with any tech stack
+- ✅ **AI-friendly** — Structured for AI agents to understand
+- ✅ **Consistent** — Same format every time = predictable results
+
+### What it is NOT:
+
+- ❌ A framework or runtime dependency
+- ❌ Tied to specific technologies
+- ❌ A replacement for documentation
+- ❌ Code that runs in your app
+
+---
+
+## 💡 Why Use It?
+
+### For Junior Developers:
+
+1. **Learn Best Practices** — Templates guide you through industry-standard workflows
+2. **Reduce Decision Fatigue** — Templates tell you what to think about
+3. **Avoid Missing Steps** — Checklists ensure nothing falls through the cracks
+4. **Get Better AI Results** — Structured input = better AI output
+
+### For Senior Developers:
+
+1. **Standardize Team Workflows** — Everyone follows the same process
+2. **Accelerate Development** — Spend less time structuring, more time building
+3. **Improve AI Collaboration** — Templates give AI the context it needs
+4. **Maintain Consistency** — Same structure across all projects
+
+### For Teams:
+
+1. **Onboarding** — New team members can learn from templates
+2. **Consistency** — All tasks follow the same format
+3. **Knowledge Sharing** — Templates capture institutional knowledge
+4. **Quality** — Built-in checklists and validation
+
+---
+
+## ⚡ Quick Start (5 Minutes)
+
+### Step 1: Copy the Profile Template
+
+Your project needs a configuration file. Copy the example and fill it in:
+
+```bash
+cp confer-agent.profile.example.yml confer-agent.profile.yml
+```
+
+Then edit `confer-agent.profile.yml` with your project details:
 
 ```yaml
-env: dev              # dev | staging | prod
-http_port: TBD        # Backend API port (set based on your infra)
-frameworks: ["TBD"]   # e.g., ["next@14", "fastapi@0.115"]
-db: "TBD"             # e.g., "postgres+drizzle"
-auth: "TBD"           # e.g., "clerk"
-infra: "TBD"          # e.g., "coolify|vercel|replit"
-notes: "This file is per-project. Templates reference it."
+env: dev
+http_port: 3000
+frameworks: ["next@14", "fastapi@0.115"]
+db: "postgres+drizzle"
+auth: "clerk"
+infra: "coolify|vercel"
 ```
 
-Templates use placeholders like `{{ENV}}`, `{{HTTP_PORT}}` and reference the profile values dynamically.
+### Step 2: Pick Your First Template
+
+Browse `TEMPLATE_INDEX.md` to find what you need:
+
+- **Building a feature?** → Use `task_template_full.md` or `task_template_quick.md`
+- **Fixing a bug?** → Use `bugfix.md`
+- **Planning a project?** → Start with `01_master_idea.md`
+
+### Step 3: Copy and Fill In
+
+1. Open the template file
+2. Copy it to `tasks/001_my_task.md` (or use auto-numbering)
+3. Fill in the sections
+4. Work through it with your AI agent
+
+### Step 4: Use It!
+
+Give your filled-in template to an AI agent. It will understand:
+- What you're building
+- Your tech stack (from the profile)
+- Constraints and requirements
+- Success criteria
+
+**Example:**
+
+```
+You: "Hey AI, help me complete this task: tasks/001_add_user_auth.md"
+AI: *Reads template* "I see you want to add Clerk authentication. 
+    Based on your profile, I'll create the Next.js server actions in 
+    src/lib/actions/ and the auth component in src/components/auth/..."
+```
+
+That's it! 🎉
 
 ---
 
-## Folder Structure
+## 📚 How Templates Work
+
+Every template follows the same structure (this is what makes AI agents so effective):
+
+### Template Structure
 
 ```
-templates/
-  01-prep/          # Project kickoff → build order
-                    # master idea, naming, UI theme, pages, wireframes, data models, system design, build order
-  02-dev/           # Daily coding workflow
-                    # task templates (full/quick), bugfix, PR review, cleanup, update workflow
-  03-ui/            # UI/design aids
-                    # color, landing page, diagrams
-  04-db/            # DB tooling
-                    # migrations, rollback
-  05-advanced/       # Orchestration, agent design, specialized workflows
-                    # orchestration, agent design playbook, Python tasks, ADK workflows
-  06-infra/         # Infrastructure runbooks
-                    # platform runbooks (Coolify, Vercel, Replit, n8n, Flowise, Qdrant, Neo4j) + conventions
-
-tasks/              # Auto-numbered tasks (NNN_slug.md)
-refs/               # Evidence (screenshots, logs, CSVs) — gitignored
-secrets/            # .env.local patterns — gitignored
+┌─────────────────────────────────────┐
+│  YAML Front Matter                  │  ← Metadata (status, priority, etc.)
+├─────────────────────────────────────┤
+│  1. Context Capsule                 │  ← Your project setup
+├─────────────────────────────────────┤
+│  2. Problem & Goal                  │  ← What you're building/why
+├─────────────────────────────────────┤
+│  3. Requirements                    │  ← Functional & technical needs
+├─────────────────────────────────────┤
+│  4. Implementation Plan             │  ← Step-by-step approach
+├─────────────────────────────────────┤
+│  5. File Map & Artifacts            │  ← Files to create/modify
+├─────────────────────────────────────┤
+│  6. Testing Checklist               │  ← How to verify success
+├─────────────────────────────────────┤
+│  7. AI Agent Actions                │  ← Instructions for AI
+└─────────────────────────────────────┘
 ```
 
-**Note:** Zero-padded folder names (01-, 02-, etc.) ensure stable sorting. Adjust numbers/names to match your repo if you've customized them.
+### Why This Works
+
+1. **Structured Input** → AI knows exactly what information to look for
+2. **Consistent Format** → AI learns patterns across all your tasks
+3. **Clear Context** → AI understands your project setup
+4. **Explicit Requirements** → AI knows what success looks like
 
 ---
 
-## Template Schema
+## 📁 Template Categories
 
-All templates follow a consistent structure for machine parsing and AI agent execution:
+We organize templates into **6 categories** for easy navigation:
 
-### 1. YAML Front Matter
+### 🎯 01-Prep: Project Planning (9 templates)
 
-Metadata block at the top of each template:
+Plan your entire project from idea to launch:
+
+- `01_master_idea.md` - Define your vision, metrics, and roadmap
+- `02_app_name.md` - Naming and positioning strategy
+- `03_ui_theme.md` - Design system and theming
+- `04_logo_prompts.md` - Logo generation prompts
+- `05_pages_and_functionality.md` - Feature mapping and sitemap
+- `06_wireframes.md` - Wireframe planning
+- `07_data_models.md` - Database schema design
+- `08_system_design.md` - Architecture overview
+- `09_build_order.md` - Phased build plan
+
+**Use these when:** Starting a new project or major feature
+
+### 💻 02-Dev: Daily Development (8 templates)
+
+Build features and fix bugs:
+
+- `task_template_full.md` - Comprehensive feature template (18 sections)
+- `task_template_quick.md` - Fast task template (<2 hours)
+- `bugfix.md` - Bug reproduction → fix → validation workflow
+- `diff_review.md` - Code review checklist
+- `git_commit_messages.md` - Commit message guidelines
+- `pr_review_checklist.md` - PR review checklist
+- `cleanup_ts_js.md` - Code cleanup workflow
+- `update_workflow.md` - Dependency update process
+
+**Use these when:** Building features or fixing bugs
+
+### 🎨 03-UI: User Interface (3 templates)
+
+Design and improve UI:
+
+- `landing_page.md` - Landing page design
+- `improve_ui.md` - UI improvement workflow
+- `diagram_mermaid.md` - Mermaid diagram generation
+
+**Use these when:** Working on UI/UX
+
+### 🗄️ 04-DB: Database Operations (2 templates)
+
+Database migrations and rollbacks:
+
+- `drizzle_down_migration.md` - Create down migrations
+- `drizzle_rollback.md` - Rollback migrations
+
+**Use these when:** Making database changes
+
+### 🏗️ 05-Advanced: Advanced Workflows (7 templates)
+
+Orchestration and specialized workflows:
+
+- `task_orchestrator.md` - Run multiple tasks with dependencies
+- `agent_orchestrator.md` - Multi-agent orchestration
+- `python_task_template.md` - Python-specific tasks
+- `adk_task_template.md` - AutoGen agent tasks
+- Plus more specialized templates...
+
+**Use these when:** Managing complex multi-task workflows
+
+### 🌐 06-Infra: Infrastructure (10 templates)
+
+Deployment and infrastructure runbooks:
+
+- `00_infra_conventions.md` - Infrastructure standards
+- `coolify_platform.md` - Coolify deployment runbook
+- `vercel_frontend.md` - Vercel frontend deployment
+- `replit_dev_env.md` - Replit development setup
+- `n8n_ops.md` - n8n workflow automation
+- `flowise_ops.md` - Flowise LLM workflows
+- `qdrant_ops.md` - Qdrant vector database
+- `neo4j_ops.md` - Neo4j graph database
+- Plus OAuth setup, GCP debugging...
+
+**Use these when:** Deploying or managing infrastructure
+
+**📖 See `TEMPLATE_INDEX.md` for the complete list with descriptions**
+
+---
+
+## 🎬 Common Workflows
+
+### Workflow 1: Building a New Feature
+
+```mermaid
+graph LR
+    A[Pick Template] --> B[Fill In Details]
+    B --> C[Share with AI]
+    C --> D[AI Implements]
+    D --> E[Review & Test]
+    E --> F[Done!]
+```
+
+**Step-by-step:**
+
+1. **Choose your template:**
+   - Simple feature (<2 hours)? → `task_template_quick.md`
+   - Complex feature? → `task_template_full.md`
+
+2. **Fill in the template:**
+   - Copy template to `tasks/001_feature_name.md`
+   - Fill in Context Capsule (from your profile)
+   - Define Problem & Goal
+   - List Requirements
+   - Plan implementation steps
+
+3. **Share with AI:**
+   ```
+   "Help me implement this task: tasks/001_feature_name.md"
+   ```
+
+4. **AI understands:**
+   - Your tech stack (from profile)
+   - What you're building (from template)
+   - How to structure code (from data access patterns)
+   - Success criteria (from checklist)
+
+5. **Review & test:**
+   - Check off success criteria
+   - Update status to `done`
+   - Commit with a clear message
+
+### Workflow 2: Fixing a Bug
+
+1. Use `bugfix.md` template
+2. Document reproduction steps
+3. Identify root cause
+4. Plan fix
+5. Implement & validate
+6. Add regression test
+
+**Example:**
+
+```markdown
+## 4. Reproduction
+
+1. Go to /login
+2. Enter invalid email
+3. Click submit
+4. **Expected:** Error message
+5. **Actual:** Page crashes
+
+## 5. Root Cause
+
+- Input validation missing in form handler
+- Server action doesn't catch validation errors
+```
+
+### Workflow 3: Planning a New Project
+
+Follow the prep templates in order:
+
+1. `01_master_idea.md` - Define vision
+2. `02_app_name.md` - Choose name
+3. `03_ui_theme.md` - Design system
+4. `05_pages_and_functionality.md` - Features & pages
+5. `07_data_models.md` - Database design
+6. `08_system_design.md` - Architecture
+7. `09_build_order.md` - Build plan
+
+**Result:** Complete project plan before writing any code!
+
+### Workflow 4: Orchestrating Multiple Tasks
+
+Use `task_orchestrator.md` to manage related tasks:
 
 ```yaml
----
-task_id: "uuid-here"
-created_by: "user.name"
-created_at: "YYYY-MM-DD"
-updated_at: "YYYY-MM-DD"
-status: "draft"        # draft | in_progress | review | done
-priority: "high"       # critical | high | normal | low
-type: "feature"        # feature | bugfix | enhancement | etc.
-labels: ["ai","template"]
-version: "1.0.0"
-project_profile:       # optional - standardize project constants
-  env: "TBD"           # dev | staging | prod
-  http_port: "TBD"     # do NOT set numeric default
-  frameworks: ["TBD"]
-  db: "TBD"
-  auth: "TBD"
-  infra: "TBD"
----
-```
-
-**Important:** Never use numeric defaults in templates; use `"TBD"` and reference `./confer-agent.profile.yml`.
-
-### 2. Context Capsule
-
-Copy-paste constants section referencing the project profile:
-
-```markdown
-## 1. Context Capsule
-
-**Copy-paste constants for this task:**
-
-- **Project:** [project-name]
-- **Runtime profile:** {{ENV}} *(alt: staging | prod)*
-- **Default ports:** HTTP={{HTTP_PORT}} (set in project profile)
-- **Frameworks:** Frontend=[name@ver], Backend=[name@ver]
-- **DB/ORM:** [e.g., Postgres + Drizzle]
-- **Auth:** [e.g., Clerk]
-- **Infra:** [e.g., Coolify on VPS; Vercel preview for PRs]
-- **Secrets location (local only):** `[project-name]/secrets/.env`
-- **Project profile:** `./confer-agent.profile.yml` (and optional `./confer-agent.profile.local.yml`)
-- **Non-negotiables:** Do NOT change ports without updating the project profile and ingress config.
-```
-
-### 3. References & Inputs
-
-External snippets/links cached in `refs/` (gitignored):
-
-```markdown
-## 2. References & Inputs
-
-External snippets/links cached in `refs/` (gitignored):
-
-- Project profile: `./confer-agent.profile.yml`
-- Task templates: `templates/02-dev/task_template_full.md`, `templates/02-dev/task_template_quick.md`
-```
-
-### 4. File Map & Artifacts
-
-Explicit "must exist" outputs:
-
-```markdown
-## File Map & Artifacts
-
-**Files to touch:**
-- `path/to/file.md` (new) → must exist with [requirements]
-- `path/to/other.ts` (update) → must include [feature]
-
-**Artifacts:**
-- Screenshot: `refs/ui_before_after.png`
-- Test report: `refs/test_coverage.html`
-```
-
-### 5. AI Actions & Guardrails
-
-Short, machine-parsable instructions:
-
-```markdown
-## AI Agent Actions & Guardrails
-
-**Actions:**
-- Generate [specific output] at [path]
-- Update [file] to include [feature]
-- Verify [condition] before proceeding
-
-**Guardrails:**
-- Do not [specific constraint]
-- Keep [alignment requirement]
-- Ensure [validation rule]
-```
-
----
-
-## Auto-numbering Rule
-
-All new tasks must follow the auto-numbering convention to maintain order and prevent conflicts.
-
-### Filename Convention
-
-New tasks must be named `tasks/NNN_<kebab-slug>.md` where:
-- `NNN` is a zero-padded 3-digit integer (001, 002, 003, ...)
-- `<kebab-slug>` is a lowercase, hyphenated identifier (e.g., `create-auth-system`)
-
-### Algorithm
-
-1. **Scan** `tasks/` directory for filenames matching `^\d{3}_.*\.md$`
-2. **Compute** `next = max(NNN) + 1` (or `001` if none found)
-3. **Zero-pad** to 3 digits and assemble `tasks/${NNN}_${slug}.md`
-4. **Re-scan** before writing to avoid collisions
-5. **Idempotency:** Auto-numbering MUST re-scan before write to avoid races/collisions
-
-### Example
-
-If `tasks/` contains:
-- `001_setup_auth.md`
-- `002_add_login.md`
-- `005_refactor_api.md`
-
-The next task with slug `add_logout` will be created as `tasks/006_add_logout.md` (max is 005, so next is 006).
-
----
-
-## Orchestrator
-
-Run multiple tasks sequentially or in parallel with dependency management.
-
-### Template Location
-
-`templates/05-advanced/task_orchestrator.md`
-
-### Usage
-
-1. Open the orchestrator template
-2. Paste a **Declared Tasks** YAML block into the document:
-
-```yaml
-mode: "sequential"   # or "parallel"
+mode: "sequential"  # or "parallel"
 
 tasks:
   - id: "T1"
-    title: "Human-readable title"
-    template: "templates/02-dev/task_template_full.md"   # or quick/bugfix/etc.
-    output_dir: "tasks/"
-    slug: "my_task_slug"
-    depends_on: []                                       # e.g., ["T0"]
-    done_when:
-      - "All success criteria in child task are checked"
-      - "Required artifacts exist under refs/"
+    title: "Set up database schema"
+    template: "templates/02-dev/task_template_full.md"
+    slug: "setup_db_schema"
+    depends_on: []  # No dependencies
+    
   - id: "T2"
-    title: "Another task"
+    title: "Create API endpoints"
     template: "templates/02-dev/task_template_quick.md"
-    output_dir: "tasks/"
-    slug: "related_task"
-    depends_on: ["T1"]                                  # Runs after T1
-    done_when:
-      - "Child task status is 'done'"
+    slug: "create_api_endpoints"
+    depends_on: ["T1"]  # Runs after T1
 ```
+
+The orchestrator will:
+- Auto-number child tasks
+- Run them in dependency order
+- Track progress
+- Report completion
+
+---
+
+## ⚙️ Project Profile System
+
+**The secret sauce:** All templates reference a single configuration file that keeps your project details in one place.
+
+### Why This Matters
+
+Instead of hard-coding ports, frameworks, etc. in every template, you define them once in `confer-agent.profile.yml`.
+
+### Profile Structure
+
+```yaml
+env: dev                          # dev | staging | prod
+http_port: 3000                   # Your API port
+frameworks: ["next@14", "fastapi@0.115"]  # Tech stack
+db: "postgres+drizzle"            # Database
+auth: "clerk"                     # Auth system
+infra: "coolify|vercel"           # Infrastructure
+```
+
+### How Templates Use It
+
+Templates reference values like `{{ENV}}`, `{{HTTP_PORT}}`, etc. When you fill in a template, you copy values from the profile:
+
+```markdown
+## Context Capsule
+
+- **Runtime profile:** dev (from profile)
+- **Default ports:** HTTP=3000 (from profile)
+- **Frameworks:** Next.js 14, FastAPI 0.115 (from profile)
+```
+
+**Benefit:** Change your profile once, and all future templates automatically use the updated values.
+
+### Two Profile Files
+
+1. **`confer-agent.profile.yml`** (committed)
+   - Project-wide configuration
+   - Shared with team
+   - Used by all templates
+
+2. **`confer-agent.profile.local.yml`** (gitignored)
+   - Your personal overrides
+   - Dev-only ports, local URLs
+   - Never committed
+
+---
+
+## 🔢 Auto-Numbering Tasks
+
+Tasks are automatically numbered to prevent conflicts:
 
 ### How It Works
 
-The orchestrator:
+1. Scan `tasks/` directory for existing numbered files
+2. Find highest number (e.g., `005_refactor_api.md`)
+3. Create next task as `006_new_feature.md`
 
-1. **Builds a DAG** from `depends_on` relationships
-   - Validates for cycles (fails fast if detected)
-   - Topologically sorts tasks for execution order
+### Example
 
-2. **Auto-numbers child tasks**
-   - Applies the auto-numbering algorithm to each child
-   - Creates files like `tasks/007_my_task_slug.md`
+```bash
+tasks/
+├── 001_setup_auth.md      # First task
+├── 002_add_login.md       # Second task
+├── 005_refactor_api.md    # Fifth task (003, 004 skipped)
+└── 006_new_feature.md     # Next task (auto-numbered)
+```
 
-3. **Executes tasks**
-   - **Sequential mode:** Runs tasks one by one, respecting dependencies
-   - **Parallel mode:** Runs all "ready" tasks (no unmet dependencies) concurrently
+### Why This Matters
 
-4. **Loops until done**
-   - For each child task, evaluates `done_when` conditions
-   - If not satisfied, refines/retries the child task
-   - Repeats until child task status is `done`
-   - Child status detection: prefers child task front matter `status` field; if absent, infers from success criteria checkboxes + artifact existence
+- ✅ No filename conflicts
+- ✅ Chronological ordering
+- ✅ Easy to reference ("see task 006")
+- ✅ Works with git history
 
-5. **Completes only when all children are done**
-   - Orchestrator finishes only when ALL child tasks meet their `done_when` conditions
+### Manual Override
 
-6. **Writes a Result Summary**
-   - Reports overall outcome, completed tasks count, key artifacts, and follow-ups
-
----
-
-## Common Workflows
-
-### Plan a Project
-
-1. Start with `01-prep/01_master_idea.md` → define vision, metrics, roadmap
-2. Continue through `02_app_name.md` → `03_ui_theme.md` → ... → `09_build_order.md`
-3. Generate artifacts: wireframes, data models, system design documents
-
-### Ship a Unit of Work
-
-1. Use `02-dev/task_template_quick.md` for rapid tasks or `task_template_full.md` for comprehensive features
-2. Fill in Context Capsule, References & Inputs
-3. Code, test, and generate artifacts (screenshots, logs) in `refs/`
-4. Mark success criteria as complete
-
-### Fix a Bug
-
-1. Use `02-dev/bugfix.md` template
-2. Document reproduction steps
-3. Implement patch
-4. Validate with tests/verification checklist
-5. Generate artifacts (before/after screenshots, test results)
-
-### Set Up Infrastructure
-
-1. Read `06-infra/00_infra_conventions.md` for canonical conventions
-2. Follow platform-specific runbooks (Coolify, Vercel, Replit, n8n, Flowise, Qdrant, Neo4j, etc.)
-3. Reference project profile for ports, env vars, and secrets
-4. Document setup steps and generate `refs/` artifacts
-
-### Orchestrate Multiple Tasks
-
-1. Use `05-advanced/task_orchestrator.md`
-2. Define Declared Tasks YAML with dependencies
-3. Choose sequential or parallel mode
-4. Let orchestrator create and manage child tasks
-5. Review Result Summary on completion
+If you need a specific number, you can create it manually, but auto-numbering handles most cases.
 
 ---
 
-## Conventions & Gotchas
+## 🎯 Task Orchestrator
 
-### ✅ Do
+**Advanced feature:** Run multiple related tasks with automatic dependency management.
 
-- **Use the project profile** for all infrastructure values (ports, env, frameworks)
-- **Place artifacts** in `refs/` directory (screenshots, logs, CSVs)
-- **Store secrets** in `secrets/` or platform environment variables
-- **Keep commits scoped** to single tasks or logical units
-- **Update TEMPLATE_INDEX.md** when adding new templates
-- **Follow auto-numbering** for all new tasks
-- **Re-scan before write** to avoid numbering collisions
+### When to Use
 
-### ❌ Don't
+- Building a feature that requires multiple steps
+- Tasks depend on each other
+- Want parallel execution when possible
 
-- **Never hard-code ports/infra** in templates; use the per-project profile
-- **Don't commit** `confer-agent.profile.local.yml` or files in `refs/`, `secrets/`
-- **Don't skip** auto-numbering (manual numbering causes conflicts)
-- **Don't bypass** DAG validation in orchestrator (cycles will break execution)
+### Example Scenario
+
+You're building user authentication:
+
+```yaml
+tasks:
+  - id: "T1"
+    title: "Set up database schema"
+    depends_on: []  # Runs first
+    
+  - id: "T2"
+    title: "Create auth API endpoints"
+    depends_on: ["T1"]  # Waits for T1
+    
+  - id: "T3"
+    title: "Build login UI component"
+    depends_on: ["T1"]  # Can run in parallel with T2
+    
+  - id: "T4"
+    title: "Wire up frontend to API"
+    depends_on: ["T2", "T3"]  # Waits for both
+```
+
+### Execution Modes
+
+**Sequential:** Run one at a time in dependency order
+**Parallel:** Run all ready tasks (no unmet dependencies) simultaneously
+
+### Features
+
+- ✅ Auto-numbers child tasks
+- ✅ Validates dependency cycles
+- ✅ Tracks progress in real-time
+- ✅ Reports completion summary
+
+**📖 See `templates/05-advanced/task_orchestrator.md` for full documentation**
 
 ---
 
-## Contributing
+## ✅ Best Practices
 
-### Style Guide
+### Do ✅
 
-- **Concise:** Use machine-parsable tables and checkboxes; minimal emojis
-- **Consistent:** Keep the schema consistent across templates
-- **Placeholders:** Prefer placeholders (`TBD`, `{{ENV}}`) over examples
-- **Explicit:** Clearly state what must exist vs. what's optional
+- **Use the profile** for all infrastructure values
+- **Place artifacts** in `refs/` directory (screenshots, logs)
+- **Store secrets** in `secrets/` (gitignored) or platform env vars
+- **Keep commits scoped** to single tasks
+- **Follow auto-numbering** for new tasks
+- **Update status** as work progresses (draft → in_progress → review → done)
+
+### Don't ❌
+
+- **Never hard-code** ports/infra in templates
+- **Don't commit** `confer-agent.profile.local.yml` or `refs/` files
+- **Don't skip** auto-numbering (causes conflicts)
+- **Don't bypass** validation in orchestrator
+- **Don't use** numeric defaults (use `TBD` instead)
+
+---
+
+## 📖 Examples
+
+### Example 1: Adding a Feature
+
+**Template:** `task_template_quick.md`
+
+**Before:**
+```
+You: "Build a user profile page"
+AI: "Sure! What tech stack? What data? What style?"
+```
+
+**After (with template):**
+```
+You: "Here's my task template: tasks/007_user_profile.md"
+AI: "Perfect! I see you're using Next.js 14, Clerk auth, 
+     and Drizzle ORM. I'll create the component in 
+     src/app/profile/, use server actions for data 
+     fetching, and follow your design system. Starting now..."
+```
+
+### Example 2: Fixing a Bug
+
+**Template:** `bugfix.md`
+
+```markdown
+## Summary
+OAuth callback fails on Chrome; users remain on /login.
+
+## Reproduction
+1. Click "Login with Google"
+2. Complete OAuth flow
+3. Redirected to /login (should go to /dashboard)
+
+## Root Cause
+- Cookie domain mismatch in production
+- OAuth callback handler missing session creation
+
+## Fix Plan
+1. Update cookie domain in Clerk config
+2. Add session creation in callback handler
+3. Add regression test
+```
+
+### Example 3: Project Planning
+
+Using prep templates, you create:
+
+- ✅ Project vision and metrics
+- ✅ App name and branding
+- ✅ Design system
+- ✅ Feature list and sitemap
+- ✅ Database schema
+- ✅ System architecture
+- ✅ Build order and milestones
+
+**Before writing a single line of code!**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how:
+
+### Template Style Guide
+
+- **Concise:** Machine-parsable tables and checkboxes
+- **Consistent:** Same schema across all templates
+- **Placeholders:** Use `TBD` or `{{PLACEHOLDER}}` format
+- **Explicit:** Clearly state required vs optional
 
 ### Template Standards
 
-- Follow the standard template schema (Front Matter → Context Capsule → ... → AI Actions & Guardrails)
+- Follow standard schema (Front Matter → Context Capsule → ... → AI Actions)
 - Reference `./confer-agent.profile.yml` in Context Capsule
-- Use zero-padded folder names for stable sorting
-- Include a "Testing/Verification checklist" section
+- Use zero-padded folder names (01-, 02-, etc.)
+- Include testing/verification checklist
 
-### Process
+### Contribution Process
 
 1. Pick a template from `TEMPLATE_INDEX.md` or create a new one
 2. Ensure it follows the schema and conventions
-3. Add yourself to the changelog in your PR
-4. Update `TEMPLATE_INDEX.md` if adding a new template
+3. Add yourself to changelog in your PR
+4. Update `TEMPLATE_INDEX.md` if adding new template
 
 ---
 
-## License
+## 📚 Resources
 
-[Add license info or link if applicable.]
+### Documentation
+
+- **`TEMPLATE_INDEX.md`** - Browse all 29 templates organized by category
+- **`confer-agent.profile.example.yml`** - Profile template with examples
+- **`templates/05-advanced/task_orchestrator.md`** - Multi-task orchestration guide
+
+### Template Categories
+
+- 🎯 **Prep** - Project planning templates
+- 💻 **Dev** - Development workflow templates
+- 🎨 **UI** - User interface templates
+- 🗄️ **DB** - Database operation templates
+- 🏗️ **Advanced** - Orchestration and specialized workflows
+- 🌐 **Infra** - Infrastructure and deployment runbooks
+
+### Quick Links
+
+- [Template Index](TEMPLATE_INDEX.md) - Find the right template
+- [Profile Example](confer-agent.profile.example.yml) - See profile format
+- [Task Orchestrator](templates/05-advanced/task_orchestrator.md) - Multi-task workflows
 
 ---
 
-## Resources
+## 🎓 Learning Path
 
-- **Template Index:** See `TEMPLATE_INDEX.md` for all available templates organized by category
-- **Profile Example:** See `confer-agent.profile.example.yml` for profile schema
-- **Orchestrator:** See `templates/05-advanced/task_orchestrator.md` for multi-task execution
+### For Beginners
+
+1. **Start here:** Read this README
+2. **Create profile:** Copy and fill in `confer-agent.profile.yml`
+3. **Try a simple task:** Use `task_template_quick.md` for a small feature
+4. **Learn patterns:** See how templates structure your thinking
+5. **Expand:** Try `task_template_full.md` for complex features
+
+### For Intermediate Developers
+
+1. **Master templates:** Use all dev templates regularly
+2. **Plan projects:** Follow prep template sequence
+3. **Infrastructure:** Use infra runbooks for deployments
+4. **Orchestrate:** Try task orchestrator for multi-step features
+
+### For Advanced Developers
+
+1. **Customize templates:** Adapt to your team's needs
+2. **Create new templates:** Add domain-specific templates
+3. **Contribute back:** Share improvements with the community
+
+---
+
+## 💬 FAQ
+
+**Q: Do I need to install anything?**  
+A: No! These are just markdown templates. Copy and use them.
+
+**Q: Will this work with my tech stack?**  
+A: Yes! Templates are project-agnostic. Your profile file defines your stack.
+
+**Q: Do I need AI to use this?**  
+A: No, but templates are optimized for AI collaboration. You can use them manually too.
+
+**Q: How do I customize templates?**  
+A: Copy a template, modify it for your needs, and commit to your repo.
+
+**Q: Can I skip sections in templates?**  
+A: Some sections are optional, but the more you fill in, the better your results.
+
+---
+
+## 📝 License
+
+[Add license info or link if applicable]
+
+---
+
+## 🙏 Acknowledgments
+
+Built for developers who want to work smarter with AI agents.
+
+**Happy Building! 🚀**
