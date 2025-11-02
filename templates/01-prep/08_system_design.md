@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Architecture diagrams: `refs/architecture-diagrams.md`
-- Service contracts: `refs/service-contracts.md`
-- Infrastructure docs: `refs/infrastructure.md`
+- Architecture diagrams: `output/architecture-diagrams.md`
+- Service contracts: `output/service-contracts.md`
+- Infrastructure docs: `output/infrastructure.md`
 
 ---
 
@@ -246,8 +246,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/diagrams/architecture.mmd` (new) → Mermaid diagram source
 
 **Artifacts required:**
-- Mermaid diagram block (C4-ish) → saved at `refs/architecture-diagram.mmd`
-- SLOs table → saved at `refs/slos-table.md`
+- Mermaid diagram block (C4-ish) → saved at `output/architecture-diagram.mmd`
+- SLOs table → saved at `output/slos-table.md`
 
 ---
 

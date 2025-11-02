@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Flowise connectors: `refs/flowise_connectors.md`
-- Flowise ops checklist: `refs/flowise_ops_checklist.md`
-- Flowise flow examples: `refs/flowise_flows.md`
+- Flowise connectors: `output/flowise_connectors.md`
+- Flowise ops checklist: `output/flowise_ops_checklist.md`
+- Flowise flow examples: `output/flowise_flows.md`
 
 ---
 
@@ -278,8 +278,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/docker-compose.yml` (update) → Flowise service config
 
 **Artifacts required:**
-- Flowise connectors → saved at `refs/flowise_connectors.md`
-- Flowise ops checklist → saved at `refs/flowise_ops_checklist.md`
+- Flowise connectors → saved at `output/flowise_connectors.md`
+- Flowise ops checklist → saved at `output/flowise_ops_checklist.md`
 
 ---
 

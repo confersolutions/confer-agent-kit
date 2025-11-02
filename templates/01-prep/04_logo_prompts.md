@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Brand identity: `refs/brand-identity.md`
-- Logo inspiration: `refs/logo-inspiration.md`
-- Competitor logos: `refs/competitor-logos.md`
+- Brand identity: `output/brand-identity.md`
+- Logo inspiration: `output/logo-inspiration.md`
+- Competitor logos: `output/competitor-logos.md`
 
 ---
 
@@ -168,8 +168,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/design-system/logo-variants/` (new) → logo asset folder
 
 **Artifacts required:**
-- Prompt list → saved at `refs/logo-prompts.md`
-- Selection rubric → saved at `refs/logo-rubric.md`
+- Prompt list → saved at `output/logo-prompts.md`
+- Selection rubric → saved at `output/logo-rubric.md`
 
 ---
 

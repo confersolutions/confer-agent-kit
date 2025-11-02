@@ -54,12 +54,12 @@ project_profile:       # optional - standardize project constants
 
 ## 3. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Product brief: `refs/auth-brief.md`
-- API notes: `refs/oauth-notes.md`
-- Diagram: `refs/arch.mmd`
+- Product brief: `output/auth-brief.md`
+- API notes: `output/oauth-notes.md`
+- Diagram: `output/arch.mmd`
 
 ---
 
@@ -272,7 +272,7 @@ Exact files to create or update, plus required artifacts:
 - `/db/migrations/2025-11-01_add_referral_code.sql` (new) → must exist
 - `/src/api/auth.ts` (update) → add `exchangeToken()`; include JSDoc
 - `/src/components/SignupForm.tsx` (new)
-- **Artifact:** screenshot of successful OAuth redirect saved at `refs/proof/oauth-success.png`
+- **Artifact:** screenshot of successful OAuth redirect saved at `output/proof/oauth-success.png`
 
 ---
 

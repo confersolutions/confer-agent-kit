@@ -42,10 +42,10 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Orchestrator examples: `refs/orchestrator_examples.md`
+- Orchestrator examples: `output/orchestrator_examples.md`
 - Task templates: `templates/02-dev/task_template_full.md`, `templates/02-dev/task_template_quick.md`, `templates/02-dev/bugfix.md`
 
 ---
@@ -89,7 +89,7 @@ tasks:
     depends_on: []                                       # e.g., ["T0"]
     done_when:
       - "All success criteria in child task are checked"
-      - "Required artifacts exist under refs/"
+      - "Required artifacts exist under output/"
 
 # Optional: Task-to-agent assignment (requires agents list above)
 # If not provided, tasks run with default single-agent behavior
@@ -127,7 +127,7 @@ assign:
 - Fill front matter with task details from Declared Tasks
 - Execute task until `done_when` conditions are satisfied:
   1. Evaluate Success Criteria checkboxes (from child task)
-  2. Verify File Map & Artifacts exist (check paths in `refs/`)
+  2. Verify File Map & Artifacts exist (check paths in `output/`)
   3. Check child task front matter `status` field (if present, prefer this)
   4. If conditions not met: refine implementation, retry
   5. Repeat until child status = `done`
@@ -154,7 +154,7 @@ assign:
 
 **Overall outcome:**
 - Completed tasks: X/Y
-- Key artifacts produced (paths under `refs/`):
+- Key artifacts produced (paths under `output/`):
   - [artifact path 1]
   - [artifact path 2]
 - Follow-ups / new tasks to open:
@@ -210,7 +210,7 @@ assign:
 
 2. **Execute Until Done:**
    - Evaluate child task Success Criteria (checkboxes)
-   - Verify File Map & Artifacts exist (paths in `refs/`)
+   - Verify File Map & Artifacts exist (paths in `output/`)
    - Check child task front matter `status` field (preferred if present)
    - If all `done_when` conditions met → mark child as `done`
    - If not satisfied → refine implementation, update child task, retry
@@ -219,7 +219,7 @@ assign:
 3. **Status Detection Priority:**
    1. Child task front matter `status: "done"` (highest priority)
    2. All Success Criteria checkboxes checked
-   3. All required artifacts exist in `refs/`
+   3. All required artifacts exist in `output/`
    4. All `done_when` conditions verified
 
 **Orchestrator Completion:**
@@ -230,12 +230,12 @@ assign:
 
 ## 11. File Map & Artifacts
 
-**Child Task Artifacts (expected in `refs/`):**
-- Screenshots: `refs/proof/*.png`
-- Logs: `refs/logs/*.txt`
-- Test reports: `refs/test-results/*.json`
-- Documentation: `refs/docs/*.md`
-- Data exports: `refs/exports/*.csv`
+**Child Task Artifacts (expected in `output/`):**
+- Screenshots: `output/proof/*.png`
+- Logs: `output/logs/*.txt`
+- Test reports: `output/test-results/*.json`
+- Documentation: `output/docs/*.md`
+- Data exports: `output/exports/*.csv`
 
 **Orchestrator Artifacts:**
 - State Tracker table (updated during execution)

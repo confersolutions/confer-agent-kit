@@ -42,13 +42,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Port routing examples: `refs/ports_routing_matrix.csv`
-- DNS configuration: `refs/dns_examples.md`
-- Migration patterns: `refs/migration_patterns.md`
+- Port routing examples: `output/ports_routing_matrix.csv`
+- DNS configuration: `output/dns_examples.md`
+- Migration patterns: `output/migration_patterns.md`
 
 ---
 
@@ -211,8 +211,8 @@ traefik.http.routers.[service].tls.certresolver: "letsencrypt"
 - `/docs/migration-guides.md` (new) → migration documentation
 
 **Artifacts required:**
-- Ports & Routing Matrix CSV → saved at `refs/ports_routing_matrix.csv`
-- DNS examples → saved at `refs/dns_examples.md`
+- Ports & Routing Matrix CSV → saved at `output/ports_routing_matrix.csv`
+- DNS examples → saved at `output/dns_examples.md`
 
 ---
 

@@ -3,6 +3,10 @@ secrets/*
 !secrets/.env.example
 !secrets/README.md
 !secrets/registry.yaml
+
+# Output directories (never commit artifacts)
+output/*
+!output/README.md
 refs/*
 !refs/README.md
 

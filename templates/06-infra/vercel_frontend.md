@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Vercel env template: `refs/vercel_env_template.env`
-- Vercel routes examples: `refs/vercel_routes_examples.md`
-- Next.js config: `refs/nextjs_config.md`
+- Vercel env template: `output/vercel_env_template.env`
+- Vercel routes examples: `output/vercel_routes_examples.md`
+- Next.js config: `output/nextjs_config.md`
 
 ---
 
@@ -267,8 +267,8 @@ export async function getStaticProps({ params }) {
 - `/next.config.js` (update) → ISR settings
 
 **Artifacts required:**
-- Vercel env template → saved at `refs/vercel_env_template.env`
-- Vercel routes examples → saved at `refs/vercel_routes_examples.md`
+- Vercel env template → saved at `output/vercel_env_template.env`
+- Vercel routes examples → saved at `output/vercel_routes_examples.md`
 
 ---
 

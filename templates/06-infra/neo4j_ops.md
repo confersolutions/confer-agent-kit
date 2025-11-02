@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Neo4j backup runbook: `refs/neo4j_backup_runbook.md`
-- Neo4j config examples: `refs/neo4j_config_examples.md`
-- Neo4j tuning guide: `refs/neo4j_tuning.md`
+- Neo4j backup runbook: `output/neo4j_backup_runbook.md`
+- Neo4j config examples: `output/neo4j_config_examples.md`
+- Neo4j tuning guide: `output/neo4j_tuning.md`
 
 ---
 
@@ -336,8 +336,8 @@ driver = GraphDatabase.driver(
 - `/docker-compose.yml` (update) → Neo4j service config
 
 **Artifacts required:**
-- Neo4j backup runbook → saved at `refs/neo4j_backup_runbook.md`
-- Neo4j config examples → saved at `refs/neo4j_config_examples.md`
+- Neo4j backup runbook → saved at `output/neo4j_backup_runbook.md`
+- Neo4j config examples → saved at `output/neo4j_config_examples.md`
 
 ---
 

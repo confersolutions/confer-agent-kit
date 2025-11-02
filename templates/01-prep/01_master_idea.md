@@ -42,12 +42,12 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Market research: `refs/market-research.md`
-- Competitor analysis: `refs/competitors.md`
-- User interviews: `refs/user-insights.md`
+- Market research: `output/market-research.md`
+- Competitor analysis: `output/competitors.md`
+- User interviews: `output/user-insights.md`
 
 ---
 
@@ -191,8 +191,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/docs/kpi-tracker.md` (new) → KPI tracking template
 
 **Artifacts required:**
-- KPI table → saved at `refs/kpi-table.md`
-- 3-phase roadmap table → saved at `refs/roadmap.md`
+- KPI table → saved at `output/kpi-table.md`
+- 3-phase roadmap table → saved at `output/roadmap.md`
 
 ---
 

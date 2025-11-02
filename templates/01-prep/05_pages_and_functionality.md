@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- User flows: `refs/user-flows.md`
-- Feature requirements: `refs/feature-requirements.md`
-- IA research: `refs/information-architecture.md`
+- User flows: `output/user-flows.md`
+- Feature requirements: `output/feature-requirements.md`
+- IA research: `output/information-architecture.md`
 
 ---
 
@@ -159,8 +159,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/docs/acceptance-criteria.md` (new) → criteria per page
 
 **Artifacts required:**
-- Sitemap table → saved at `refs/sitemap.md`
-- Acceptance criteria checklist → saved at `refs/acceptance-criteria.md`
+- Sitemap table → saved at `output/sitemap.md`
+- Acceptance criteria checklist → saved at `output/acceptance-criteria.md`
 
 ---
 

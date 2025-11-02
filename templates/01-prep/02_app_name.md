@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Competitor names: `refs/competitor-names.md`
-- Brand mood board: `refs/brand-mood.md`
-- Domain research: `refs/domain-research.md`
+- Competitor names: `output/competitor-names.md`
+- Brand mood board: `output/brand-mood.md`
+- Domain research: `output/domain-research.md`
 
 ---
 
@@ -160,8 +160,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/docs/positioning.md` (new) → positioning statement document
 
 **Artifacts required:**
-- Name candidates CSV → saved at `refs/name-candidates.csv`
-- Positioning one-liner → saved at `refs/positioning-oneliner.txt`
+- Name candidates CSV → saved at `output/name-candidates.csv`
+- Positioning one-liner → saved at `output/positioning-oneliner.txt`
 
 ---
 

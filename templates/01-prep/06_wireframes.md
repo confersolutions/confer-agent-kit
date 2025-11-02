@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Sitemap: `refs/sitemap.md`
-- User flows: `refs/user-flows.md`
-- Design inspiration: `refs/wireframe-inspiration.md`
+- Sitemap: `output/sitemap.md`
+- User flows: `output/user-flows.md`
+- Design inspiration: `output/wireframe-inspiration.md`
 
 ---
 
@@ -161,8 +161,8 @@ Notes: [Additional context]
 - `/docs/wireframe-annotations.md` (new) → annotation documentation
 
 **Artifacts required:**
-- List of frames to produce → saved at `refs/wireframe-list.md`
-- Annotation template (markdown block) → saved at `refs/annotation-template.md`
+- List of frames to produce → saved at `output/wireframe-list.md`
+- Annotation template (markdown block) → saved at `output/annotation-template.md`
 
 ---
 

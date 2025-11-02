@@ -19,7 +19,7 @@ project_profile:       # optional - standardize project constants
 
 # Testing Checklist Template
 
-**Purpose:** Lightweight test plan per task. Use this to define what tests are needed, how to verify functionality, and document test results. Produces concrete artifacts under `refs/`.
+**Purpose:** Lightweight test plan per task. Use this to define what tests are needed, how to verify functionality, and document test results. Produces concrete artifacts under `output/`.
 
 ---
 
@@ -42,12 +42,12 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 - Task being tested: `tasks/NNN_feature_name.md`
-- API docs: `refs/api-spec.md`
-- Test examples: `refs/test-examples.md`
+- API docs: `output/api-spec.md`
+- Test examples: `output/test-examples.md`
 
 **Standards reference:**
 - Frontend testing: `standards/frontend.md`
@@ -98,7 +98,7 @@ test('validates email correctly', () => {
 - `/src/components/Button.test.tsx` (new/update)
 
 **Artifacts:**
-- Test results: `refs/test-results/unit-YYYYMMDD.json`
+- Test results: `output/test-results/unit-YYYYMMDD.json`
 
 ### Integration Tests
 
@@ -126,8 +126,8 @@ test('creates user successfully', async () => {
 - `/tests/integration/auth-flow.test.ts` (new/update)
 
 **Artifacts:**
-- Test results: `refs/test-results/integration-YYYYMMDD.json`
-- Test logs: `refs/test-results/integration-logs-YYYYMMDD.txt`
+- Test results: `output/test-results/integration-YYYYMMDD.json`
+- Test logs: `output/test-results/integration-logs-YYYYMMDD.txt`
 
 ### E2E Tests
 
@@ -147,7 +147,7 @@ test('user can register and login', async ({ page }) => {
   await page.click('button[type="submit"]');
   
   await expect(page).toHaveURL('/dashboard');
-  await page.screenshot({ path: 'refs/proof/registration-success.png' });
+  await page.screenshot({ path: 'output/proof/registration-success.png' });
 });
 ```
 
@@ -156,9 +156,9 @@ test('user can register and login', async ({ page }) => {
 - `/tests/e2e/payment-flow.spec.ts` (new/update)
 
 **Artifacts:**
-- Screenshots: `refs/proof/e2e-YYYYMMDD/*.png`
-- Test results: `refs/test-results/e2e-YYYYMMDD.json`
-- Video recordings: `refs/proof/e2e-videos/` (if enabled)
+- Screenshots: `output/proof/e2e-YYYYMMDD/*.png`
+- Test results: `output/test-results/e2e-YYYYMMDD.json`
+- Video recordings: `output/proof/e2e-videos/` (if enabled)
 
 ### Manual QA Checklist
 
@@ -175,8 +175,8 @@ test('user can register and login', async ({ page }) => {
 - Browser: Chrome, Firefox, Safari (list applicable)
 
 **Artifacts:**
-- Screenshots: `refs/proof/manual-qa-YYYYMMDD/*.png`
-- Notes: `refs/proof/manual-qa-notes-YYYYMMDD.md`
+- Screenshots: `output/proof/manual-qa-YYYYMMDD/*.png`
+- Notes: `output/proof/manual-qa-notes-YYYYMMDD.md`
 
 ---
 
@@ -192,10 +192,10 @@ test('user can register and login', async ({ page }) => {
 - [Test name]: [failure reason, link to artifact]
 
 **Artifacts Produced:**
-- `refs/test-results/unit-YYYYMMDD.json`
-- `refs/test-results/integration-YYYYMMDD.json`
-- `refs/test-results/e2e-YYYYMMDD.json`
-- `refs/proof/manual-qa-YYYYMMDD/*.png` (screenshots)
+- `output/test-results/unit-YYYYMMDD.json`
+- `output/test-results/integration-YYYYMMDD.json`
+- `output/test-results/e2e-YYYYMMDD.json`
+- `output/proof/manual-qa-YYYYMMDD/*.png` (screenshots)
 
 **Coverage:**
 - Unit test coverage: [X%] (if measured)
@@ -210,7 +210,7 @@ test('user can register and login', async ({ page }) => {
 - Create/update test files based on Test Plan
 - Run tests and capture results
 - Document failures and fixes
-- Generate test artifacts under `refs/`
+- Generate test artifacts under `output/`
 - Update test results checkboxes
 
 **Guardrails:**
@@ -218,7 +218,7 @@ test('user can register and login', async ({ page }) => {
 - Set `created_at` = {{AUTO:DATE:America/Chicago}}, `updated_at` = {{AUTO:DATETIME_ISO:America/Chicago}}.
 - Replace only in YAML/TODO fields; never inject {{TOKEN}} into runtime code.
 - Never hard-code ports, frameworks, or environment values; use `{{HTTP_PORT}}`, `{{FRAMEWORKS}}`, `{{ENV}}` from profile.
-- Store test artifacts under `refs/test-results/` or `refs/proof/`.
+- Store test artifacts under `output/test-results/` or `output/proof/`.
 - Follow testing standards in `standards/frontend.md`, `standards/backend.md`.
 - Use project profile (`./confer-agent.profile.yml`) for test environment values.
 

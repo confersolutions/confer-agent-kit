@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Qdrant snapshot runbook: `refs/qdrant_snapshot_runbook.md`
-- Qdrant collections table: `refs/qdrant_collections_table.csv`
-- Qdrant configuration: `refs/qdrant_config.md`
+- Qdrant snapshot runbook: `output/qdrant_snapshot_runbook.md`
+- Qdrant collections table: `output/qdrant_collections_table.csv`
+- Qdrant configuration: `output/qdrant_config.md`
 
 ---
 
@@ -261,8 +261,8 @@ client = QdrantClient(
 - `/docker-compose.yml` (update) → Qdrant service config
 
 **Artifacts required:**
-- Qdrant snapshot runbook → saved at `refs/qdrant_snapshot_runbook.md`
-- Qdrant collections table → saved at `refs/qdrant_collections_table.csv`
+- Qdrant snapshot runbook → saved at `output/qdrant_snapshot_runbook.md`
+- Qdrant collections table → saved at `output/qdrant_collections_table.csv`
 
 ---
 

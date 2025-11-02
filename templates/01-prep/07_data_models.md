@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Domain research: `refs/domain-research.md`
-- ER diagrams: `refs/er-diagrams.md`
-- Data requirements: `refs/data-requirements.md`
+- Domain research: `output/domain-research.md`
+- ER diagrams: `output/er-diagrams.md`
+- Data requirements: `output/data-requirements.md`
 
 ---
 
@@ -213,9 +213,9 @@ External snippets/links cached in `refs/` (gitignored):
 - `/docs/data-model.md` (new) → data model documentation
 
 **Artifacts required:**
-- Entity table → saved at `refs/entity-table.md`
-- Relationship list → saved at `refs/relationship-list.md`
-- Draft ER notes (bullets) → saved at `refs/er-notes.md`
+- Entity table → saved at `output/entity-table.md`
+- Relationship list → saved at `output/relationship-list.md`
+- Draft ER notes (bullets) → saved at `output/er-notes.md`
 
 ---
 

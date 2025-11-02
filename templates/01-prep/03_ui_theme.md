@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Brand guidelines: `refs/brand-guidelines.md`
-- Design inspiration: `refs/design-inspiration.md`
-- Accessibility standards: `refs/a11y-standards.md`
+- Brand guidelines: `output/brand-guidelines.md`
+- Design inspiration: `output/design-inspiration.md`
+- Accessibility standards: `output/a11y-standards.md`
 
 ---
 
@@ -223,8 +223,8 @@ theme: {
 - `/design-system/spacing.ts` (new) → spacing scale
 
 **Artifacts required:**
-- Token table → saved at `refs/design-tokens.md`
-- Contrast checklist → saved at `refs/contrast-checklist.md`
+- Token table → saved at `output/design-tokens.md`
+- Contrast checklist → saved at `output/contrast-checklist.md`
 
 ---
 

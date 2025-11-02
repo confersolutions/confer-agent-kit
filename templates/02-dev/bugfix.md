@@ -52,11 +52,11 @@ One line describing the defect and user impact.
 
 ## 3. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Logs: `refs/logs/oauth-callback.txt`
-- Screenshot: `refs/proof/oauth-error.png`
+- Logs: `output/logs/oauth-callback.txt`
+- Screenshot: `output/proof/oauth-error.png`
 - Related task/PR: [ID or link]
 
 ---
@@ -110,7 +110,7 @@ External snippets/links cached in `refs/` (gitignored):
 - `/db/migrations/2025-11-01_revert_bad_constraint.sql` (new) → must exist
 
 **Artifacts required:**
-- Screenshot of successful flow → `refs/proof/oauth-success.png`
+- Screenshot of successful flow → `output/proof/oauth-success.png`
 
 ---
 

@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Traefik examples: `refs/coolify_traefik_examples.md`
-- Backup checklist: `refs/coolify_backup_checklist.md`
-- Platform docs: `refs/coolify_docs.md`
+- Traefik examples: `output/coolify_traefik_examples.md`
+- Backup checklist: `output/coolify_backup_checklist.md`
+- Platform docs: `output/coolify_docs.md`
 
 ---
 
@@ -278,8 +278,8 @@ healthcheck:
 - `/docker-compose.yml` (update) → Traefik labels
 
 **Artifacts required:**
-- Traefik examples → saved at `refs/coolify_traefik_examples.md`
-- Backup checklist → saved at `refs/coolify_backup_checklist.md`
+- Traefik examples → saved at `output/coolify_traefik_examples.md`
+- Backup checklist → saved at `output/coolify_backup_checklist.md`
 
 ---
 

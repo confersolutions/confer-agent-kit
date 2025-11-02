@@ -42,13 +42,13 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Master plan: `refs/master-plan.md`
-- Roadmap: `refs/roadmap.md`
-- Risk assessment: `refs/risks.md`
+- Master plan: `output/master-plan.md`
+- Roadmap: `output/roadmap.md`
+- Risk assessment: `output/risks.md`
 
 ---
 
@@ -247,8 +247,8 @@ Phase 0 → Phase 1 → Phase 2 → Phase 3 (linear dependency chain)
 - `/docs/release-plan.md` (new) → release schedule
 
 **Artifacts required:**
-- Phase table with prerequisites column → saved at `refs/phase-table.md`
-- Cut-lines for release → saved at `refs/release-cutlines.md`
+- Phase table with prerequisites column → saved at `output/phase-table.md`
+- Cut-lines for release → saved at `output/release-cutlines.md`
 
 ---
 

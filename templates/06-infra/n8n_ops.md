@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- n8n webhook patterns: `refs/n8n_webhook_patterns.md`
-- n8n backup restore: `refs/n8n_backup_restore.md`
-- n8n workflow examples: `refs/n8n_workflows.md`
+- n8n webhook patterns: `output/n8n_webhook_patterns.md`
+- n8n backup restore: `output/n8n_backup_restore.md`
+- n8n workflow examples: `output/n8n_workflows.md`
 
 ---
 
@@ -320,8 +320,8 @@ environment:
 - `/docker-compose.yml` (update) → n8n service config
 
 **Artifacts required:**
-- n8n webhook patterns → saved at `refs/n8n_webhook_patterns.md`
-- n8n backup restore → saved at `refs/n8n_backup_restore.md`
+- n8n webhook patterns → saved at `output/n8n_webhook_patterns.md`
+- n8n backup restore → saved at `output/n8n_backup_restore.md`
 
 ---
 

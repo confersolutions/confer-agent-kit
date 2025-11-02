@@ -671,7 +671,7 @@ tasks:
 ### Do ✅
 
 - **Use the profile** for all infrastructure values
-- **Place artifacts** in `refs/` directory (screenshots, logs)
+- **Place artifacts** in `output/` directory (screenshots, logs)
 - **Store secrets** in `secrets/` (gitignored) or platform env vars
 - **Keep commits scoped** to single tasks
 - **Follow auto-numbering** for new tasks
@@ -680,7 +680,7 @@ tasks:
 ### Don't ❌
 
 - **Never hard-code** ports/infra in templates
-- **Don't commit** `confer-agent.profile.local.yml` or `refs/` files
+- **Don't commit** `confer-agent.profile.local.yml` or `output/` files
 - **Don't skip** auto-numbering (causes conflicts)
 - **Don't bypass** validation in orchestrator
 - **Don't use** numeric defaults (use `TBD` instead)

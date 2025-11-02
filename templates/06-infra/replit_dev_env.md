@@ -44,13 +44,13 @@ project_profile:           # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
 
-- Replit dev checklist: `refs/replit_dev_checklist.md`
-- Replit env sync script: `refs/replit_env_sync.sh`
-- Replit tunnel guide: `refs/replit_tunnels.md`
+- Replit dev checklist: `output/replit_dev_checklist.md`
+- Replit env sync script: `output/replit_env_sync.sh`
+- Replit tunnel guide: `output/replit_tunnels.md`
 
 ---
 
@@ -195,7 +195,7 @@ External snippets/links cached in `refs/` (gitignored):
 
 | Script | Purpose | Path |
 |-------|---------|------|
-| `replit_env_sync.sh` | Sync env vars from Coolify | `refs/replit_env_sync.sh` |
+| `replit_env_sync.sh` | Sync env vars from Coolify | `output/replit_env_sync.sh` |
 | `replit_env_check.sh` | Verify env vars loaded | Local script |
 | `replit_tunnel_setup.sh` | Configure tunnels | Local script |
 
@@ -220,7 +220,7 @@ External snippets/links cached in `refs/` (gitignored):
    ```
 
 **Script Location Note:**
-- Script paths stored in `refs/` (gitignored)
+- Script paths stored in `output/` (gitignored)
 - Scripts not included in repo (security)
 - Document script usage in checklist
 
@@ -254,8 +254,8 @@ External snippets/links cached in `refs/` (gitignored):
 - `/.replit` (update) → Replit project settings
 
 **Artifacts required:**
-- Replit dev checklist → saved at `refs/replit_dev_checklist.md`
-- Replit env sync script path → saved at `refs/replit_env_sync.sh` (path only, no content)
+- Replit dev checklist → saved at `output/replit_dev_checklist.md`
+- Replit env sync script path → saved at `output/replit_env_sync.sh` (path only, no content)
 
 ---
 

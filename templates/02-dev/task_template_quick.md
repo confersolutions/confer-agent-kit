@@ -53,12 +53,12 @@ project_profile:       # optional - standardize project constants
 
 ## References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Product brief: `refs/auth-brief.md`
-- API notes: `refs/oauth-notes.md`
-- Diagram: `refs/arch.mmd`
+- Product brief: `output/auth-brief.md`
+- API notes: `output/oauth-notes.md`
+- Diagram: `output/arch.mmd`
 
 ---
 
@@ -108,7 +108,7 @@ External snippets/links cached in `refs/` (gitignored):
 - `/path/to/file2.ts` (update)
 
 **Artifacts:**
-- Screenshot of successful OAuth redirect saved at `refs/proof/oauth-success.png`
+- Screenshot of successful OAuth redirect saved at `output/proof/oauth-success.png`
 
 **Testing:**
 - ☐ Unit test for [key function]

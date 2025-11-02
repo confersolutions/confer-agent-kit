@@ -19,7 +19,7 @@ project_profile:       # optional - standardize project constants
 
 # Verification Workflow Template
 
-**Purpose:** Post-merge verification steps and rollback checklist. Use this after merging a PR or deploying changes to verify everything works and document rollback procedures. Produces concrete artifacts under `refs/`.
+**Purpose:** Post-merge verification steps and rollback checklist. Use this after merging a PR or deploying changes to verify everything works and document rollback procedures. Produces concrete artifacts under `output/`.
 
 ---
 
@@ -43,12 +43,12 @@ project_profile:       # optional - standardize project constants
 
 ## 2. References & Inputs
 
-External snippets/links cached in `refs/` (gitignored):
+External snippets/links cached in `output/` (gitignored):
 
 - Project profile: `./confer-agent.profile.yml`
-- Merged PR: `refs/pr-XXX-merge-info.md`
-- Deployment config: `refs/deployment-config.yml`
-- Health check endpoint: `refs/health-response.json`
+- Merged PR: `output/pr-XXX-merge-info.md`
+- Deployment config: `output/deployment-config.yml`
+- Health check endpoint: `output/health-response.json`
 
 **Standards reference:**
 - Backend verification: `standards/backend.md`
@@ -73,8 +73,8 @@ External snippets/links cached in `refs/` (gitignored):
 - Rollback commit: [previous commit hash] (for rollback reference)
 
 **Artifacts:**
-- Deployment logs: `refs/deployment-logs-YYYYMMDD.txt`
-- CI/CD status: `refs/ci-status-YYYYMMDD.json`
+- Deployment logs: `output/deployment-logs-YYYYMMDD.txt`
+- CI/CD status: `output/ci-status-YYYYMMDD.json`
 
 ---
 
@@ -86,13 +86,13 @@ External snippets/links cached in `refs/` (gitignored):
 - ☐ Health endpoint: `GET [deployment-url]/api/health` (fill in deployment URL)
   - Expected: 200 OK with status: "ok"
   - Actual: [status code, response body]
-  - Artifact: `refs/proof/health-check-YYYYMMDD.json`
+  - Artifact: `output/proof/health-check-YYYYMMDD.json`
 
 **Database Connectivity:**
 - ☐ Database connection: [test query]
   - Expected: [query result]
   - Actual: [query result]
-  - Artifact: `refs/proof/db-connection-YYYYMMDD.txt`
+  - Artifact: `output/proof/db-connection-YYYYMMDD.txt`
 
 **External Services:**
 - ☐ Auth service: [Clerk/Auth0/etc. status]
@@ -107,21 +107,21 @@ External snippets/links cached in `refs/` (gitignored):
   - Steps: 1) ... 2) ... 3) ...
   - Expected: [what should happen]
   - Actual: [what happened]
-  - Screenshot: `refs/proof/flow-YYYYMMDD-*.png`
+  - Screenshot: `output/proof/flow-YYYYMMDD-*.png`
 
 **API Endpoints:**
 - ☐ [Endpoint name]: [method, path]
   - Request: [request body/params]
   - Expected: [status, response body]
   - Actual: [status, response body]
-  - Artifact: `refs/proof/api-YYYYMMDD-*.json`
+  - Artifact: `output/proof/api-YYYYMMDD-*.json`
 
 **UI Components:**
 - ☐ [Component/page name]: [what to verify]
   - URL: [test URL] (fill in deployment URL)
   - Expected: [what should render]
   - Actual: [what rendered]
-  - Screenshot: `refs/proof/ui-YYYYMMDD-*.png`
+  - Screenshot: `output/proof/ui-YYYYMMDD-*.png`
 
 ### Performance Verification
 
@@ -129,18 +129,18 @@ External snippets/links cached in `refs/` (gitignored):
 - ☐ API endpoint: `GET [deployment-url]/api/users` (fill in deployment URL)
   - Expected: < 500ms
   - Actual: [response time]
-  - Artifact: `refs/proof/performance-YYYYMMDD.json`
+  - Artifact: `output/proof/performance-YYYYMMDD.json`
 
 **Page Load Times:**
 - ☐ Homepage: `[deployment-url]/` (fill in deployment URL)
   - Expected: < 2s
   - Actual: [load time]
-  - Artifact: `refs/proof/performance-YYYYMMDD.json`
+  - Artifact: `output/proof/performance-YYYYMMDD.json`
 
 **Database Query Performance:**
 - ☐ Slow queries: [check for queries > 1s]
   - Results: [list any slow queries]
-  - Artifact: `refs/proof/slow-queries-YYYYMMDD.json`
+  - Artifact: `output/proof/slow-queries-YYYYMMDD.json`
 
 ---
 
@@ -162,13 +162,13 @@ External snippets/links cached in `refs/` (gitignored):
    - ☐ Critical flows work
    - ☐ Database state consistent
 4. **Document rollback:**
-   - Artifact: `refs/rollback-report-YYYYMMDD.md`
+   - Artifact: `output/rollback-report-YYYYMMDD.md`
    - Include: reason, commit reverted to, verification results
 
 **Rollback Artifacts:**
-- Rollback report: `refs/rollback-report-YYYYMMDD.md`
-- Rollback logs: `refs/rollback-logs-YYYYMMDD.txt`
-- Post-rollback verification: `refs/proof/rollback-verification-YYYYMMDD.json`
+- Rollback report: `output/rollback-report-YYYYMMDD.md`
+- Rollback logs: `output/rollback-logs-YYYYMMDD.txt`
+- Post-rollback verification: `output/proof/rollback-verification-YYYYMMDD.json`
 
 ---
 
@@ -185,11 +185,11 @@ External snippets/links cached in `refs/` (gitignored):
 - [Issue description]: [severity, impact, fix plan]
 
 **Artifacts Produced:**
-- `refs/proof/health-check-YYYYMMDD.json`
-- `refs/proof/flow-YYYYMMDD-*.png` (screenshots)
-- `refs/proof/api-YYYYMMDD-*.json` (API responses)
-- `refs/proof/performance-YYYYMMDD.json` (performance metrics)
-- `refs/rollback-report-YYYYMMDD.md` (if rollback occurred)
+- `output/proof/health-check-YYYYMMDD.json`
+- `output/proof/flow-YYYYMMDD-*.png` (screenshots)
+- `output/proof/api-YYYYMMDD-*.json` (API responses)
+- `output/proof/performance-YYYYMMDD.json` (performance metrics)
+- `output/rollback-report-YYYYMMDD.md` (if rollback occurred)
 
 **Next Steps:**
 - [Follow-up tasks if needed]
@@ -206,7 +206,7 @@ External snippets/links cached in `refs/` (gitignored):
 - Test API endpoints
 - Check performance metrics
 - Document any issues found
-- Generate verification artifacts under `refs/`
+- Generate verification artifacts under `output/`
 - Update verification checklist
 
 **Guardrails:**
@@ -215,7 +215,7 @@ External snippets/links cached in `refs/` (gitignored):
 - Replace only in YAML/TODO fields; never inject {{TOKEN}} into runtime code.
 - Never hard-code ports or environment values; use `{{HTTP_PORT}}`, `{{ENV}}` from profile.
 - Deployment URLs are user-provided (not in profile); fill in `[production/staging URL]` sections.
-- Store verification artifacts under `refs/proof/` or `refs/`.
+- Store verification artifacts under `output/proof/` or `output/`.
 - Follow verification standards in `standards/backend.md`, `standards/frontend.md`.
 - Use project profile (`./confer-agent.profile.yml`) for deployment environment values.
 - Document rollback procedure clearly; never skip rollback verification.
