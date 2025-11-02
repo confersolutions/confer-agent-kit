@@ -1,0 +1,11 @@
+# Project profile - generated for health check endpoint implementation
+# This file is per-project. Templates reference it.
+
+env: dev              # dev | staging | prod
+http_port: 3000       # Backend API port (set based on your infra)
+frameworks: ["next@14", "fastapi@0.115"]
+db: "postgres+drizzle"
+auth: "clerk"
+infra: "coolify|vercel|replit"  # Choose applicable infrastructure
+notes: "This file is per-project. Templates reference it."
+

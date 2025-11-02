@@ -1,0 +1,75 @@
+# Confer Agent Kit — Template Index
+
+Quick reference for all 29 templates organized by category. Start here to find the right template for your task.
+
+---
+
+## Prep Templates (9 templates: project kickoff → build order)
+
+- [01_master_idea.md](templates/01-prep/01_master_idea.md) – Project Master Plan with vision, metrics, roadmap, and governance
+- [02_app_name.md](templates/01-prep/02_app_name.md) – Naming & Positioning with criteria, candidates, and selection rubric
+- [03_ui_theme.md](templates/01-prep/03_ui_theme.md) – Design System Seed with tokens, colors, typography, and accessibility
+- [04_logo_prompts.md](templates/01-prep/04_logo_prompts.md) – Logo Prompt Pack with style-diverse prompts and selection criteria
+- [05_pages_and_functionality.md](templates/01-prep/05_pages_and_functionality.md) – App IA & Feature Map with sitemap, flows, and acceptance criteria
+- [06_wireframes.md](templates/01-prep/06_wireframes.md) – Wireframe Planning with component breakdowns and annotation standards
+- [07_data_models.md](templates/01-prep/07_data_models.md) – Domain & Schema Outline with entities, relationships, and migration principles
+- [08_system_design.md](templates/01-prep/08_system_design.md) – Architecture Overview with services, data flow, caching, and scaling
+- [09_build_order.md](templates/01-prep/09_build_order.md) – Phased Build Plan with milestones, dependencies, and release cut-lines
+
+---
+
+## Dev Templates (7 templates: daily coding workflow)
+
+- [task_template_full.md](templates/dev/task_template_full.md) – Full task template (comprehensive)
+- [task_template_quick.md](templates/dev/task_template_quick.md) – Quick task template (fast tasks)
+- [bugfix.md](templates/dev/bugfix.md) – Standardized bug reproduction → fix → validation workflow
+- [diff_review.md](templates/dev/diff_review.md)
+- [cleanup_ts_js.md](templates/dev/cleanup_ts_js.md)
+- [git_commit_messages.md](templates/dev/git_commit_messages.md)
+- [pr_review_checklist.md](templates/dev/pr_review_checklist.md)
+- [update_workflow.md](templates/dev/update_workflow.md)
+
+---
+
+## DB Templates (2 templates)
+
+- [drizzle_down_migration.md](templates/db/drizzle_down_migration.md)
+- [drizzle_rollback.md](templates/db/drizzle_rollback.md)
+
+---
+
+## UI Templates (3 templates)
+
+- [improve_ui.md](templates/ui/improve_ui.md)
+- [landing_page.md](templates/ui/landing_page.md)
+- [diagram_mermaid.md](templates/ui/diagram_mermaid.md)
+
+---
+
+## Infra Templates (10 templates: infrastructure operations)
+
+- [00_infra_conventions.md](templates/06-infra/00_infra_conventions.md) – Canonical conventions for ports, routing, DNS/TLS, secrets, and cross-platform migration
+- [coolify_platform.md](templates/06-infra/coolify_platform.md) – Coolify platform runbook with Traefik, volumes, health checks, backups, and rollbacks
+- [vercel_frontend.md](templates/06-infra/vercel_frontend.md) – Vercel (Next.js) frontend runbook with build settings, env mapping, ISR, and Coolify integration
+- [replit_dev_env.md](templates/06-infra/replit_dev_env.md) – Replit dev workflow with tunnels, secrets, preview URLs, and env sync
+- [n8n_ops.md](templates/06-infra/n8n_ops.md) – n8n on Coolify operations with webhooks, credentials, queues, backups, and rollbacks
+- [flowise_ops.md](templates/06-infra/flowise_ops.md) – Flowise on Coolify operations with LLM keys, Qdrant/Neo4j connectors, caching, and rate limits
+- [qdrant_ops.md](templates/06-infra/qdrant_ops.md) – Qdrant on Coolify operations with collections, snapshots, sizing, and networking
+- [neo4j_ops.md](templates/06-infra/neo4j_ops.md) – Neo4j on Coolify operations with APOC, auth, backups, tuning, and connectors
+- [setup_oauth_google_github.md](templates/06-infra/setup_oauth_google_github.md)
+- [gcp_debugging.md](templates/06-infra/gcp_debugging.md)
+
+---
+
+## Advanced Templates (7 templates: Python + ADK agents + orchestration)
+
+- [python_task_template.md](templates/05-advanced/python_task_template.md)
+- [cleanup_python.md](templates/05-advanced/cleanup_python.md)
+- [adk_task_template.md](templates/05-advanced/adk_task_template.md)
+- [adk_bottleneck_analysis.md](templates/05-advanced/adk_bottleneck_analysis.md)
+- [agent_orchestrator.md](templates/05-advanced/agent_orchestrator.md)
+- [agent_design_playbook.md](templates/05-advanced/agent_design_playbook.md)
+- [task_orchestrator.md](templates/05-advanced/task_orchestrator.md) – Orchestrate arbitrary tasks (seq/parallel) with loop-until-done
+
+---
+

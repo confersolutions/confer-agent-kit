@@ -1,0 +1,16 @@
+# confer-agent-kit local state
+secrets/*
+!secrets/.env.example
+!secrets/README.md
+!secrets/registry.yaml
+refs/*
+!refs/README.md
+
+# common local env
+.env
+.env.local
+.env.*.local
+
+# per-project profile local overrides (gitignored in kit)
+confer-agent.profile.local.yml
+
