@@ -89,3 +89,44 @@ Quick reference for all 29 templates organized by category. Start here to find t
 
 ---
 
+## Claude Code Templates (For Claude Code Users)
+
+**Purpose:** Templates for creating Claude Code commands, agents, and skills for everyday tasks (file analysis, MD updates, report generation). Fully optional—only for Claude Code users.
+
+### Overview & Setup
+
+- [README.md](templates/claude-code/README.md) – Complete guide to Claude Code integration (commands, agents, skills, memory)
+
+### Commands
+
+**Commands are reusable workflows you run with `/command-name` in Claude Code:**
+
+- [command_template.md](templates/claude-code/commands/command_template.md) – Base template for creating commands
+- [analyze_files.md](templates/claude-code/commands/analyze_files.md) – Example: analyze files in directory
+- [update_md.md](templates/claude-code/commands/update_md.md) – Example: update markdown file with new content
+
+### Agents
+
+**Agents are specialized reusable specialists that commands can delegate to:**
+
+- [agent_template.md](templates/claude-code/agents/agent_template.md) – Base template for creating agents
+- [file_analyzer.md](templates/claude-code/agents/file_analyzer.md) – Example: file analysis specialist
+- [report_generator.md](templates/claude-code/agents/report_generator.md) – Example: report generation specialist
+
+### Skills
+
+**Skills are proactive knowledge modules Claude Code uses automatically:**
+
+- [skill_template.md](templates/claude-code/skills/skill_template.md) – Base template for creating skills
+- [file_analysis_standards.md](templates/claude-code/skills/file_analysis_standards.md) – Example: file analysis standards skill
+
+### Memory
+
+**Memory provides cross-session continuity for locations, preferences, state:**
+
+- [locations_template.md](templates/claude-code/memory/locations_template.md) – Template for permanent memory (network drives, file locations, tax documents, etc.)
+
+**Usage:** Copy templates to `.claude/commands/`, `.claude/agents/`, `.claude/skills/`, `.claude/memory/` in your project root. See [claude-code/README.md](templates/claude-code/README.md) for setup guide.
+
+---
+
