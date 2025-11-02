@@ -1,0 +1,311 @@
+---
+description: Confer Agent Kit coding standards and template framework conventions
+globs: ["*.md", "*.yml", "*.yaml", "*.ts", "*.tsx", "*.js", "*.jsx", "*.py"]
+alwaysApply: true
+---
+
+# Confer Agent Kit Framework Rules
+
+## Overview
+
+These rules enforce the Confer Agent Kit template framework conventions to ensure consistency, maintainability, and proper AI agent collaboration. The framework uses structured templates with project profiles, auto-numbering, and consistent patterns across all development workflows.
+
+This rule prevents violations of the template framework structure, ensures proper use of the project profile system, enforces auto-numbering conventions, and maintains consistency in how tasks are created and managed.
+
+## Core Rules
+
+1. **Never hard-code** infrastructure values (ports, environments, frameworks, auth systems, infra platforms) in templates or code - always reference `confer-agent.profile.yml`
+
+2. **Never create** task files without following the auto-numbering convention (`tasks/NNN_slug.md` format)
+
+3. **Always use** the project profile (`confer-agent.profile.yml`) for all infrastructure values
+
+4. **Always resolve** placeholder tokens ({{TOKEN}}) at template instantiation time, never leave them unresolved in output
+
+5. **Fix the root cause** by using the framework conventions rather than working around them
+
+## Common Violations and Solutions
+
+### ❌ BAD: Hard-coding infrastructure values
+
+```yaml
+# BAD: Hard-coded port in template
+http_port: 3000  # Never do this!
+
+# BAD: Hard-coded framework
+frameworks: ["next@14"]  # Don't hard-code!
+```
+
+### ✅ GOOD: Using project profile
+
+```yaml
+# GOOD: Reference profile values
+http_port: {{HTTP_PORT}}  # From confer-agent.profile.yml
+
+# GOOD: Use placeholders that reference profile
+frameworks: ["{{FRAMEWORKS}}"]  # From profile
+```
+
+### ❌ BAD: Creating tasks without auto-numbering
+
+```markdown
+# BAD: Manual numbering or no numbering
+tasks/new_feature.md  # Missing number
+tasks/5_add_auth.md   # Wrong format (should be 005)
+tasks/add_auth.md     # No numbering at all
+```
+
+### ✅ GOOD: Auto-numbered task files
+
+```markdown
+# GOOD: Follow auto-numbering convention
+tasks/001_add_auth.md      # First task
+tasks/002_create_login.md  # Second task
+tasks/007_refactor_api.md  # Seventh task (005, 006 skipped)
+```
+
+### ❌ BAD: Leaving placeholders unresolved
+
+```markdown
+# BAD: Placeholder left in template
+created_at: "{{AUTO:DATE:America/Chicago}}"  # Should be resolved!
+updated_at: "{{AUTO:DATETIME_ISO}}"           # Unresolved!
+```
+
+### ✅ GOOD: Resolving placeholders
+
+```markdown
+# GOOD: Placeholders resolved to actual values
+created_at: "2025-01-15"
+updated_at: "2025-01-15T10:30:00-06:00"
+
+# GOOD: In YAML front matter (placeholders OK here)
+---
+created_at: "{{AUTO:DATE:America/Chicago}}"  # OK in template source
+---
+```
+
+### ❌ BAD: Skipping template structure
+
+```markdown
+# BAD: Missing required sections
+# Some task content without Context Capsule, File Map, etc.
+```
+
+### ✅ GOOD: Following template structure
+
+```markdown
+# GOOD: Complete template structure
+## 1. Task Overview
+## 2. Context Capsule
+## 3. References & Inputs
+## 4. Context (Current State)
+## 5. Problem & Success
+...
+## 17. AI Agent Actions & Guardrails
+```
+
+## When You Think You Need Exceptions
+
+### "I just need a quick fix, I'll skip the template"
+
+```markdown
+# ❌ BAD: No structure, no context
+# Quick fix: Change port to 3001
+```
+
+```markdown
+# ✅ GOOD: Use task_template_quick.md even for quick fixes
+## Context Capsule
+- Runtime profile: dev
+- Default ports: HTTP=3001 (updated in profile first!)
+
+## Problem & Goal
+Quick fix: Update port configuration
+
+## File Map & Artifacts
+- confer-agent.profile.yml (update) → change http_port to 3001
+```
+
+### "This is a one-off, I don't need the full template"
+
+```markdown
+# ❌ BAD: Creating unstructured tasks
+# Just adding a button
+```
+
+```markdown
+# ✅ GOOD: Use appropriate template (quick or full)
+# For one-off changes, use task_template_quick.md
+# For complex changes, use task_template_full.md
+# Templates ensure nothing is missed
+```
+
+## Specific Project Patterns
+
+### Creating New Tasks
+
+```markdown
+# ❌ BAD: Wrong location or naming
+some_feature.md  # Wrong location
+feature.md       # Wrong location and naming
+```
+
+```markdown
+# ✅ GOOD: Follow auto-numbering in tasks/ directory
+# Step 1: Check existing tasks for max number
+# Step 2: Create next task: tasks/008_feature_name.md
+# Step 3: Use proper template (quick or full)
+```
+
+### Using Project Profile
+
+```yaml
+# ❌ BAD: Hard-coding in task template
+env: dev
+port: 3000
+```
+
+```yaml
+# ✅ GOOD: Reference profile with placeholders
+env: {{ENV}}  # From confer-agent.profile.yml
+http_port: {{HTTP_PORT}}  # From profile
+```
+
+### Data Access Pattern Rules
+
+```typescript
+// ❌ BAD: Code in wrong location
+// Mutation code directly in route handler
+export async function POST(req: Request) {
+  await db.insert(user).values({...})  // Should be in actions/
+}
+```
+
+```typescript
+// ✅ GOOD: Follow data access pattern rules
+// In src/lib/actions/users.ts
+export async function createUser(data: UserData) {
+  return await db.insert(user).values(data)
+}
+
+// In route handler
+import { createUser } from '@/lib/actions/users'
+export async function POST(req: Request) {
+  await createUser(data)
+}
+```
+
+### Context Capsule Patterns
+
+```markdown
+# ❌ BAD: Missing Context Capsule or incomplete
+Project: my-app
+```
+
+```markdown
+# ✅ GOOD: Complete Context Capsule from profile
+## Context Capsule
+
+- **Project:** my-app
+- **Runtime profile:** {{ENV}} (from profile)
+- **Default ports:** HTTP={{HTTP_PORT}} (from profile)
+- **Frameworks:** Frontend={{FRAMEWORKS}}, Backend={{FRAMEWORKS}}
+- **DB/ORM:** {{DB}} (from profile)
+- **Auth:** {{AUTH_SYSTEM}} (from profile)
+- **Infra:** {{INFRA}} (from profile)
+- **Project profile:** `./confer-agent.profile.yml`
+```
+
+## Alternative Solutions
+
+### 1. Use Project Profile for All Config
+
+When you need to reference infrastructure values:
+
+```yaml
+# Always read from confer-agent.profile.yml
+# Use placeholders: {{ENV}}, {{HTTP_PORT}}, {{FRAMEWORKS}}, etc.
+# Never hard-code values in templates or task files
+```
+
+### 2. Auto-Numbering Algorithm
+
+When creating new tasks:
+
+1. Scan `tasks/` directory for pattern `^\d{3}_.*\.md$`
+2. Extract all NNN values (001, 002, 005, etc.)
+3. Compute `max(NNN) + 1`
+4. Zero-pad to 3 digits
+5. Create `tasks/{NNN}_{slug}.md`
+6. Re-scan before write to avoid collisions
+
+### 3. Placeholder Resolution
+
+When working with templates:
+
+- **In template source files:** Placeholders like `{{ENV}}` are OK
+- **In instantiated tasks:** Resolve to actual values from profile
+- **In YAML front matter:** Resolve date placeholders to actual dates
+- **Never inject** unresolved placeholders into runtime code
+
+## Template Structure Enforcement
+
+### Required Sections (Full Template)
+
+1. YAML Front Matter (with project_profile)
+2. Task Overview (Title, Goal, Priority, Type)
+3. Context Capsule (from profile)
+4. References & Inputs
+5. Context (Current State) with Technology & Architecture
+6. Problem & Success (with Success Criteria)
+7. Development Mode & Constraints
+8. Functional Requirements
+9. Non-Functional & Compliance
+10. Data & API Changes (with Data Access Pattern Rules)
+11. Frontend Impact
+12. Plan & Phases
+13. Dependencies
+14. Second-Order Impact Analysis
+15. Rollback Plan
+16. File Map & Artifacts
+17. Testing Checklist
+18. AI Agent Actions & Guardrails
+19. Wrap-Up / Reflection
+
+### Quick Template Minimum
+
+- Task Overview
+- Context Capsule
+- References & Inputs
+- Context & Problem
+- Functional Requirements
+- Data Access Patterns (if applicable)
+- Plan (Mini)
+- File Map & Artifacts
+- AI Agent Actions & Guardrails
+
+## Tool Configuration
+
+### Git Pre-commit Hook
+
+The repository includes a pre-commit hook that scans for stray placeholders in templates. This is intentional - templates SHOULD contain placeholders that get resolved when instantiated. The hook should be updated to only flag unresolved placeholders in instantiated task files, not in template source files.
+
+## Checklist for the Assistant
+
+- [ ] Never suggest hard-coding infrastructure values (ports, env, frameworks) - always reference `confer-agent.profile.yml`
+- [ ] Never create task files without auto-numbering (`tasks/NNN_slug.md` format)
+- [ ] Always propose using project profile placeholders (`{{ENV}}`, `{{HTTP_PORT}}`, etc.) instead of hard-coded values
+- [ ] Always follow template structure (full or quick) when creating tasks
+- [ ] Always include Context Capsule section referencing the project profile
+- [ ] Always resolve date placeholders (`{{AUTO:DATE}}`) in instantiated tasks, not just leave them
+- [ ] Always follow data access pattern rules (mutations in actions/, queries in queries/, etc.)
+- [ ] Always include Second-Order Impact Analysis for significant changes
+- [ ] Always update task status as work progresses (draft → in_progress → review → done)
+- [ ] Always place artifacts in `refs/` directory, not in tasks/ or templates/
+- [ ] Fix the root cause by using framework conventions, don't work around them
+
+## Remember
+
+**Core Principle:** Confer Agent Kit is about consistency and structure. The project profile system prevents hard-coding, auto-numbering prevents conflicts, and template structure ensures nothing is missed. When in doubt, reference the project profile and follow the template structure - shortcuts lead to technical debt.
+
